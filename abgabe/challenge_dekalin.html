@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Challenge Junior E-Commerce Manager – Dekalin</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:14mm 14mm 14mm 14mm}
+:root{--red:#D42A3B;--ink:#262626;--ink2:#555;--soft:#F5F5F5;--line:#E3E3E3;--green:#2E7D32}
+*{box-sizing:border-box}
+body{font-family:Barlow,Arial,sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.38;margin:0}
+.page{page-break-after:always;position:relative;min-height:265mm}
+.page:last-child{page-break-after:auto}
+h1{font-size:30pt;line-height:1.05;margin:0 0 8px;font-weight:800}
+h2{font-size:17pt;margin:0 0 6px;font-weight:800;line-height:1.1}
+h3{font-size:11pt;margin:12px 0 5px;font-weight:700}
+p{margin:0 0 6px}
+.kick{color:var(--red);font-weight:800;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.lead{font-size:10.5pt;color:var(--ink2);margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:8.3pt;margin:6px 0 8px}
+th,td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:700}
+td.hl,th.hl{background:#FDF0F1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.box{background:var(--soft);border-radius:8px;padding:9px 11px}
+.box.red{background:#FDF0F1;border-left:4px solid var(--red)}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.kpi b{display:block;font-size:20pt;line-height:1;color:var(--red)}
+.kpi span{font-size:8pt;color:var(--ink2)}
+ul{margin:0 0 6px 16px;padding:0}li{margin-bottom:2px}
+.foot{position:absolute;bottom:0;left:0;right:0;font-size:7.5pt;color:#999;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:4px}
+.tag{display:inline-block;background:var(--ink);color:#fff;border-radius:3px;font-size:7pt;padding:1px 5px;font-weight:700}
+.tag.r{background:var(--red)}
+.small{font-size:7.8pt;color:var(--ink2)}
+code,pre{font-family:Menlo,monospace;font-size:7pt}
+pre{background:#1f1f1f;color:#eaeaea;border-radius:6px;padding:8px;white-space:pre-wrap;margin:4px 0}
+.cover{display:flex;flex-direction:column;justify-content:space-between}
+.coverband{background:var(--ink);color:#fff;border-radius:12px;padding:26px 26px 22px;margin-bottom:14px}
+.coverband h1{color:#fff}
+.links a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:9.5pt;border-radius:6px;padding:5px 11px;margin-right:8px}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--red);border-radius:7px;font-weight:800;font-size:20px;margin-right:8px;color:#fff;vertical-align:middle}
+.shots{display:grid;grid-template-columns:3.1fr 1fr;gap:10px;align-items:start}
+.shots img{width:100%;border:1px solid var(--line);border-radius:6px}
+.tree{font-family:Menlo,monospace;font-size:7.2pt;line-height:1.3;background:var(--soft);border-radius:8px;padding:8px 10px;white-space:pre}
+.yes{color:var(--green);font-weight:700}.no{color:var(--red);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ================= 1 DECKBLATT ================= -->
+<div class="page cover">
+  <div>
+    <div class="coverband">
+      <div class="kick" style="color:#ff8a95">Challenge · Junior E-Commerce Manager · NETSHAKE</div>
+      <h1><span class="mark">D</span>Dekalin: Vom Dichtstoff-Hersteller zum Shop, den Kunden und KI-Systeme empfehlen</h1>
+      <p style="font-size:11.5pt;opacity:.85;margin-top:10px">Aufgabe 1: Shopify-Produktseite „DEKAsyl MS-5“, Navigation, Header &amp; Footer (Vision Theme) · Aufgabe 2: KI-Sichtbarkeit in ChatGPT &amp; Perplexity</p>
+      <p style="font-size:10pt;margin-top:16px;color:#cfcfcf"><b style="color:#fff">Liam Ried</b> · Abgabe 02.11.2026</p>
+      <p class="links" style="margin-top:8px"><a href="https://795qyvp8mh4ckrcr-100512923981.shopifypreview.com/products/dekasyl-ms-5-kleb-dichtstoff">Shopify-Vorschau ›</a><a href="https://github.com/liamcolin9614-spec/netshake-challenge-dekalin">Code &amp; Doku (GitHub) ›</a><span style="font-size:9.5pt;color:#cfcfcf">Video: Link folgt per Mail</span></p>
+    </div>
+    <h2>Das Ergebnis auf einer Seite</h2>
+    <div class="grid2">
+      <div class="box">
+        <h3 style="margin-top:0">Aufgabe 1 – Shop &amp; Produktseite</h3>
+        <ul>
+          <li><b>Leitidee: Einstieg nach Vorhaben, nicht nach Produktname.</b> Vier Kauf-Welten (Abdichten · Kleben &amp; Montieren · Reparieren &amp; Schützen · Reinigen &amp; Zubehör) + zwei Vertrauens-Welten (Ratgeber · Warum Dekalin), je 2 × 3 Links – exakt ausbalanciert.</li>
+          <li><b>PDP in 18 Bausteinen</b> mit echten Vision-18-Sections: USP-Zeile unter dem Titel, Mengenstaffel, „Oft zusammen gekauft“, Haftgrund-Ampel, 4-Schritt-Anleitung, Vergleich MS-1/2/5 und fair vs. Sikaflex-554, Solar-Montage-Set, 10 FAQ.</li>
+          <li>Jede Design-Entscheidung ist begründet – aus Sicht des Kunden, der sein Vorhaben kennt, aber keine Produktnamen.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3 style="margin-top:0">Aufgabe 2 – KI-Sichtbarkeit</h3>
+        <ul>
+          <li><b>20 echte Tests</b> (10 Prompts × ChatGPT &amp; Perplexity, 01.11.2026), Wettbewerber Sika &amp; TEROSON.</li>
+          <li><b>Kernbefund:</b> Dekalin gewinnt nur, wenn die Marke im Prompt steht. Bei offenen Fragen ist Sika 1,6× so sichtbar – und <b>dekalin.de wird bei keiner einzigen Nicht-Markenfrage zitiert (0/14)</b>.</li>
+          <li><b>Ursache:</b> Sika hat „Antwortseiten“ (Caravan-FAQ, Profi-Broschüre), Dekalin hat Content, aber nicht zitierfähig; Produktdaten fehlerhaft (Schema-Preis 0,00 €).</li>
+          <li><b>5 Maßnahmen</b>, #1 fertig ausgearbeitet: Antwortseite „Solarpanel ohne Bohren kleben“ inkl. Text, FAQ und JSON-LD.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid3" style="margin-top:12px">
+      <div class="kpi"><b>35,7 %</b><span>Sichtbarkeit Dekalin bei Nicht-Markenfragen (Sika: 57,1 %)</span></div>
+      <div class="kpi"><b>0 / 14</b><span>Zitate von dekalin.de bei Nicht-Markenfragen</span></div>
+      <div class="kpi"><b>22,6 %</b><span>Share of Voice Dekalin (Sika 41,9 %, TEROSON 6,5 %)</span></div>
+    </div>
+    <h3 style="margin-top:16px">Wie ich gearbeitet habe</h3>
+    <p class="small">1) dekalin.de/.com im Roh-HTML gesichtet (wie ein Crawler) · 2) Vision-Live-Demo analysiert (Section-/Block-Namen v18.0.0) · 3) Konzept → klickbarer Prototyp → Shopify-Importdateien · 4) KI-Tests systematisch protokolliert. Annahmen sind überall mit <b>[A]</b> markiert und auf Seite 10 gesammelt.</p>
+  </div>
+  <div>
+    <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>1 / 10</span></div>
+  </div>
+</div>
+
+<!-- ================= 2 NAVIGATION ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 1 · Navigationskonzept</div>
+  <h2>„Was hast du vor?“ statt „Was ist DEKAsyl?“</h2>
+  <p class="lead">Endkunden kennen keine Produktnamen – sie kennen ihr Problem: „An der Dachluke kommt Wasser rein“ oder „Solarmodul ohne Bohren aufs Dach“. Kein Caravan-Shop (Fritz Berger, Reimo, Obelink) sortiert konsequent nach Anwendung – hier kann sich Dekalin unterscheiden.</p>
+  <table>
+    <tr><th style="width:15%"></th><th style="width:17%">Hauptpunkt</th><th>Spalte 1 → 3 Links</th><th>Spalte 2 → 3 Links</th><th style="width:18%">Promo-Kachel</th></tr>
+    <tr><td rowspan="4"><b>Was kann ich kaufen?</b></td><td><b>Abdichten</b></td><td><i>Am Dach:</i> Fenster &amp; Dachluken · Dachhauben &amp; Durchführungen · Fugen &amp; Nähte außen</td><td><i>Wände, Türen &amp; innen:</i> Serviceklappen &amp; Türen (wiederlösbar) · Kantenleisten &amp; Keder · Bad &amp; Küche</td><td>Welche Dichtmasse für die Dachluke? ›</td></tr>
+    <tr><td class="hl"><b>Kleben &amp; Montieren</b> <span class="tag r">TOP</span></td><td class="hl"><i>Aufs Dach:</i> <b>Solarmodul kleben</b> · SAT-Anlage &amp; Antenne · Markise, Dachträger &amp; Anbauteile</td><td class="hl"><i>Bauteile &amp; Ausbau:</i> Fenster &amp; Scheiben · Halter, Leisten &amp; Innenausbau · Seitenwände (Profi)</td><td class="hl">Solar-Montage-Set ›</td></tr>
+    <tr><td><b>Reparieren &amp; Schützen</b></td><td><i>Reparieren:</i> Kunststoff &amp; GFK · Schraublöcher · Wasserschaden</td><td><i>Schützen:</i> Unterbodenschutz · Hohlraumschutz · Radkästen</td><td>Undicht? Wasserschaden stoppen ›</td></tr>
+    <tr><td><b>Reinigen &amp; Zubehör</b></td><td><i>Vorbereiten &amp; Finish:</i> Reinigen &amp; Entfetten · Haftvermittler · Glätten &amp; Regenstreifen</td><td><i>Sets &amp; Werkzeug:</i> Klebe- &amp; Dichtsets · Kartuschenpressen · Bestseller</td><td>Was Profis immer dabeihaben ›</td></tr>
+    <tr><td rowspan="2"><b>Warum soll ich kaufen?</b></td><td><b>Ratgeber</b></td><td><i>Produkt finden:</i> Produktfinder (3 Fragen) · MS-1/2/5 im Vergleich · FAQ</td><td><i>Anleitungen:</i> Schritt-für-Schritt · Video-Akademie · Datenblätter &amp; SDB</td><td>Buch „Klebt nicht gibt's nicht!“ ›</td></tr>
+    <tr><td><b>Warum Dekalin</b></td><td><i>Erfahrung:</i> Seit 1907 · Der „Klebepapst“ &amp; Buch · Auszeichnungen</td><td><i>Service:</i> Kostenlose Beratung · Schulungen DIN 2304 · Gewerbe &amp; Händler</td><td>Kostenlose Anwendungsberatung ›</td></tr>
+  </table>
+  <p class="small"><b>Balance:</b> 6 Hauptpunkte × 2 Spalten × 3 Links = 36 Aufgaben-Links, keine Welt schwächer. „Alle anzeigen“ jeweils <i>am Ende</i>. Ein Produkt liegt in mehreren Aufgaben-Kollektionen (automatisch über Tags) – MS-5 z. B. in 7.</p>
+  <div class="grid2">
+    <div>
+      <h3>Begleitende Navigationshilfen</h3>
+      <ul>
+        <li><b>Suchleiste dauerhaft ausgeklappt</b> („z. B. Dachluke abdichten“), Synonyme: Silikon/Dichtmasse → Dichtstoff, Kraftkleber → MS-5, „Deklain“ → Dekalin.</li>
+        <li><b>Produktfinder in 3 Fragen:</b> Was hast du vor? → Wo am Fahrzeug? → Welches Material? → gefilterte Kollektion.</li>
+        <li><b>Filter</b> (Search &amp; Discovery, Metafelder): Einsatzort · Untergrund · Eigenschaft (überlackierbar, wiederlösbar …) · Klebkraft 1–5 · Farbe · Gebinde.</li>
+        <li><b>Produktkarten mit Klartext-Unterzeile:</b> „DEKAsyl MS-5 – Kraftkleber für Solarmodule &amp; Anbauteile“.</li>
+        <li><b>Mobil:</b> ☰ links, Warenkorb rechts, Suche darunter; Drawer mit denselben Welten, Vertrauens-Welten optisch abgesetzt.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Warum so?</h3>
+      <table>
+        <tr><th>Entscheidung</th><th>Begründung</th></tr>
+        <tr><td>Suche sichtbar statt Lupe</td><td>Über 15 Produkte, Profis suchen gezielt nach Namen</td></tr>
+        <tr><td>Nur Text im Mega-Menü + 1 Promo</td><td>Thumbnails je Menüpunkt machen das Menü lang und unruhig</td></tr>
+        <tr><td>„Alle anzeigen“ unten</td><td>Erst die konkreten Aufgaben, dann der Sammel-Link</td></tr>
+        <tr><td>„Über uns“ nicht als eigener Punkt, sondern als Vertrauens-Welt „Warum Dekalin“ mit Kaufnutzen</td><td>Reines „Über uns“ wird kaum geklickt – hier als Beweis-Welt umgedeutet</td></tr>
+        <tr><td>Anwendung statt Produkttyp</td><td>Recherche: alle Händler sortieren nach Produktart; Sika-DIY nutzt Anwendungseinstieg</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>2 / 10</span></div>
+</div>
+
+<!-- ================= 3 PDP AUFBAU ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 1 · Produktseite DEKAsyl MS-5</div>
+  <h2>Verkaufspsychologischer Aufbau: Problem → Lösung → Beweis → Kauf</h2>
+  <p class="lead">Reihenfolge Desktop = Mobil. Alle technischen Werte aus dem Technischen Datenblatt 07/2024; Preise sind Annahmen.</p>
+  <table>
+    <tr><th>#</th><th style="width:22%">Vision-Section / Block</th><th style="width:38%">Inhalt</th><th>Warum</th></tr>
+    <tr><td>1</td><td>breadcrumbs</td><td>Startseite › (Kollektion, über die der Kunde kam) › MS-5</td><td>Kunde sieht: „ich bin bei meinem Vorhaben richtig“</td></tr>
+    <tr><td>2</td><td>Galerie</td><td>8 Medien mit Feature-Callouts: Packshot · Solarmodul am Dach · Vorteile · Haftgrund-Ampel · 4 Schritte · Farben</td><td>Infos ins Bild (Amazon-Prinzip); Packshot bleibt Bild 1</td></tr>
+    <tr class="hl"><td>3</td><td>Titel + USP-Zeile + Sterne</td><td>„Klebt Solarmodul, SAT-Anlage &amp; Anbauteile ohne Bohren – und dichtet gleich mit.“</td><td>Ein Hauptversprechen direkt am Namen; Rule of One</td></tr>
+    <tr><td>4</td><td>Preisblock</td><td>19,95 € · 68,79 €/l · ab 49 € versandkostenfrei [A]; Gesamt- und Literpreis rechnen mit Staffel und Gebinde mit</td><td>Grundpreis klar beim Gesamtpreis (PAngV), Schwelle verkauft Zubehör mit</td></tr>
+    <tr><td>5</td><td>4 Bullets</td><td>Hält sofort · Ohne Primer · −40…+120 °C · überlackierbar</td><td>Feature → Ergebnis</td></tr>
+    <tr><td>6</td><td>Varianten (Farbfelder)</td><td>Weiß/Schwarz · 290 ml/600 ml; direkt darunter: Grau → MS-2</td><td>Kunde mit falscher Farbe wird aufgefangen; nächster Schritt: Bild-Swatches</td></tr>
+    <tr class="hl"><td>7–8</td><td>Mengenstaffel · Lieferzeile · ATC</td><td>1 / 3 / 6 Stück (−5 / −10 % [A]) · ● Auf Lager – 1–3 Werktage · roter Button</td><td>Packs statt Mengenregler; ein Kaufweg ohne Sticky-ATC/Express</td></tr>
+    <tr><td>9</td><td>Trust-Leiste · „Oft zusammen gekauft“</td><td>Versand · Anwendungsversprechen [A] · Beratung / Reiniger + Haftvermittler + Presse mit einem Klick</td><td>Risiko nehmen; Warenkorb ↑</td></tr>
+    <tr><td>10</td><td>Akkordeons neben der Kaufbox</td><td>Beschreibung (offen) · Technische Daten · Haftgründe · Verarbeitung · Downloads · Versand</td><td>Profis bekommen alles, Laien werden nicht erschlagen</td></tr>
+    <tr><td>11</td><td>Anwendungen</td><td>6 Projekte als Chips → Aufgaben-Kollektionen</td><td>Kunde erkennt sein Projekt</td></tr>
+    <tr class="hl"><td>12</td><td>Haftgrund-Ampel</td><td>🟢 ohne Primer · 🟡 mit DEKAVATOR · 🔴 PE/PP/Teflon</td><td>Größter Kaufeinwand – ehrlich beantwortet</td></tr>
+    <tr><td>13</td><td>4 Schritt-Karten + Produkte</td><td>Reinigen · Raupe ziehen · Fügen · Aushärten – je Schritt das passende Produkt mit „+“ in den Warenkorb</td><td>Das „Wie“ macht das Ergebnis vorstellbar</td></tr>
+    <tr><td>14</td><td>Solar-Montage-Set (Produktkarte)</td><td>Bestandteile als Kacheln, 69,95 € statt 77,75 € [A], direkt in den Warenkorb</td><td>Warenkorb ↑ und Erfolgsquote ↑</td></tr>
+    <tr><td>15</td><td>Zeitleiste (dunkel)</td><td><b>Storytelling</b> 1907 · 1935 Automobilbau · 2012 Caravaning · 2014 Schulungen DIN 2304</td><td>Tiefe &amp; Vertrauen ohne Superlative</td></tr>
+    <tr class="hl"><td>16</td><td>Vergleich</td><td>MS-1 / MS-2 / MS-5 + MS-5 vs. Sikaflex-554 (nur Datenblattwerte)</td><td>Löst Namensverwirrung, begründet Premium, grenzt fair ab</td></tr>
+    <tr><td>17</td><td>Bewertungen</td><td>3 Beispielbewertungen (gekennzeichnet) – im Live-Shop Review-App</td><td>Social Proof vor den letzten Fragen</td></tr>
+    <tr><td>18</td><td>FAQ</td><td>10 Fragen (Solar ohne Bohren, Primer, Zeiten, Lackieren, MS-1/2, Silikon, Verbrauch …)</td><td>Letzte Einwände + schließt Datenlücken (auch für KI)</td></tr>
+  </table>
+  <p class="small"><b>Bewusst weggelassen:</b> Sticky ATC, Buy-it-now, freier Mengenwähler, Countdown/Stock-Counter, UGC-Section, „Made in Germany“ (nicht belegt), Superlative – und alles Doppelte: Infobox (= USP-Zeile), Vorteils-Karten (= Bullets), Zubehör-Section (= „Oft zusammen gekauft“), Service-Karten (= Trust-Leiste).</p>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>3 / 10</span></div>
+</div>
+
+<!-- ================= 4 SCREENSHOTS + HEADER/FOOTER ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 1 · Umsetzung Desktop &amp; Mobile, Header &amp; Footer</div>
+  <h2>So sieht es aus</h2>
+  <div class="shots">
+    <div><img src="../aufgabe1/07_shopify_screenshots/shopify_desktop_atf.png"><p class="small">Shopify-Test-Shop, Desktop above the fold: Announcement Bar · Header mit Suchfeld · Mega-Menü · Galerie mit Callouts · Buybox mit Preisblock und Bullets</p></div>
+    <div><img src="../aufgabe1/07_shopify_screenshots/shopify_mobile_atf.png" style="height:96mm;object-fit:cover;object-position:top"><p class="small">Shopify mobil (390 px)</p></div>
+  </div>
+  <div class="grid2" style="margin-top:8px">
+    <div>
+      <h3>Header</h3>
+      <ul>
+        <li><b>Announcement Bar</b> (Anthrazit, rotierend): Versand 1–3 Tage · Direkt vom Hersteller seit 1907 · Kostenlose Beratung.</li>
+        <li><b>Desktop:</b> Logo · ausgeklapptes Suchfeld · Konto · Warenkorb; darunter Mega-Menü (4 Kauf-Welten | 2 Vertrauens-Welten, optisch getrennt). Sticky beim Hochscrollen.</li>
+        <li><b>Mobil:</b> ☰ – Logo – Suche – Warenkorb, darunter eine wischbare Leiste mit den Kauf-Welten. Mobile Dock (neu in Vision 18) bewusst <b>aus</b> – zwei Navigationen verwirren.</li>
+      </ul>
+      <h3>Theme-Konfiguration</h3>
+      <table>
+        <tr><td>Preset</td><td>Vision (Fuel Themes, v18.0.0)</td></tr>
+        <tr><td>Farben</td><td><b style="color:#D42A3B">■ #D42A3B</b> nur für Kauf-Aktionen · ■ #262626 Text/dunkle Flächen · ■ #F5F5F5 Wechsel-Sections · Grün #2E7D32 nur Lagerstatus (aus CI von dekalin.de)</td></tr>
+        <tr><td>Typo / Form</td><td>Barlow 800/700/400 · Buttons 6 px Radius · Karten 14 px</td></tr>
+        <tr><td>Favicon</td><td>Rotes Quadrat, weißes „D“, das als Kleberaupe ausläuft</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Footer (dunkel)</h3>
+      <ul>
+        <li><b>Marke:</b> „Kleben &amp; Dichten seit 1907. Profi-Know-how für Wohnmobil, Caravan und Werkstatt – direkt vom Hersteller.“ + Support-Mail + Beratungs-Button.</li>
+        <li><b>3 Spalten à 6 Links</b> + Spalte „Rechtliches“: Shop · Hilfe (Beratung, Produktfinder, FAQ, Versand, Rückgabe, Kontakt) · Wissen &amp; Dekalin (Anleitungen, Datenblätter, Über uns, Schulungen, Gewerbe, Karriere).</li>
+        <li><b>Newsletter</b> „Klebe-Tipps vom Profi“ – Mehrwert statt Rabatt, Einwilligungs-Checkbox.</li>
+        <li><b>Trust-Zeile + Zahlungsicons</b> hier statt auf der PDP (dort zählt der Nutzen).</li>
+        <li><b>Rechtliches:</b> Impressum, AGB, Datenschutz, Widerruf, Versand, Barrierefreiheit (BFSG) – im Test-Shop als Muster.</li>
+      </ul>
+      <div class="box red" style="margin-top:8px"><b>Shopify-Stand:</b> Umgesetzt im Test-Shop mit Vision 18 – 10 Produkte (MS-5 + Familie + Zubehör + Solar-Set), 28 Kollektionen, alle Menüs 1:1 aus dem Konzept, Header/Mega-Menü/Footer in Dekalin-CI und eigene Produktvorlage „dekasyl“ (10 Sections mit den Bausteinen von S. 3, ohne Dopplungen). Per Skript gebaut (Admin-API + Theme-Editor-API), Code &amp; Begründungen dokumentiert. <a href="https://795qyvp8mh4ckrcr-100512923981.shopifypreview.com/products/dekasyl-ms-5-kleb-dichtstoff">Zur Vorschau ›</a></div>
+    </div>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>4 / 10</span></div>
+</div>
+
+<!-- ================= 5 KI TEST METHODE + MATRIX ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 2 · Prompts &amp; Testergebnisse</div>
+  <h2>10 Prompts, 2 KI-Systeme, 20 Antworten</h2>
+  <p class="lead">Test am 01.11.2026 · Perplexity (Modus „Suche“) und ChatGPT (Websuche automatisch) · beide ausgeloggt, neue Session je Prompt · Rohantworten und vollständige Quellenlisten je Prompt dokumentiert. Bewertung: ✓ korrekt+vollständig · ◐ lückenhaft · ⚠ verzerrt · ✗ falsch.</p>
+  <table>
+    <tr><th>#</th><th>Typ</th><th style="width:28%">Prompt</th><th>Perplexity: Dekalin · Quellen</th><th>ChatGPT: Dekalin · Quellen</th><th>Sika P/C</th><th>TEROSON P/C</th></tr>
+    <tr><td>P1</td><td>Marke</td><td>Was ist Dekalin und welche Produkte gibt es für Wohnmobile?</td><td class="yes">ja (1) ◐</td><td class="yes">ja (1) ✓</td><td>–/–</td><td>–/–</td></tr>
+    <tr><td></td><td></td><td colspan="5" class="small">P: dekalin.de 1×, Blogs 6, Händler 2 – knapp, ohne MS-Linie · C: dekalin.de/.com, ausführliche Produktfamilien + Anwendungsmatrix</td></tr>
+    <tr><td>P2</td><td>Marke</td><td>Dekalin oder Sikaflex – was ist besser zum Abdichten am Wohnmobil?</td><td class="yes">ja (1) ⚠</td><td class="yes">ja (1) ⚠</td><td>2/2</td><td>–/–</td></tr>
+    <tr><td></td><td></td><td colspan="5" class="small">Beide: „Dekalin = dauerplastisch dichten, Sika = kleben“ – DEKAsyl (Kleber) fehlt/untergeht. Perplexity-Primärquelle: <b>Sika-Caravan-FAQ</b></td></tr>
+    <tr><td>P3</td><td>Marke/Produkt</td><td>Ist DEKAsyl MS 5 gut zum Kleben und Abdichten?</td><td class="yes">ja (1) ◐</td><td class="yes">ja (1) ✓</td><td>–/–</td><td>–/–</td></tr>
+    <tr><td></td><td></td><td colspan="5" class="small">P: 3 Sätze, keine Werte; <b>Datenblatt kommt von reimo.com</b>, 0× dekalin.de · C: alle Kennwerte korrekt (−40/+120 °C, 12 min, 4 mm/24 h) via dekalin.com</td></tr>
+    <tr><td>P4</td><td>Produkt</td><td>Womit dichte ich eine Dachluke am Wohnmobil ab?</td><td class="yes">ja (1+2) ✓</td><td class="yes">ja (1+3) ✓</td><td>Quelle/2</td><td>–/–</td></tr>
+    <tr><td>P5</td><td>Produkt</td><td>Womit klebe ich Aluminium und Kunststoff dauerhaft und wetterfest?</td><td class="no">nein</td><td class="no">nein</td><td>–/–</td><td>–/–</td></tr>
+    <tr><td>P6</td><td>Produkt</td><td>Welcher MS-Polymer-Dichtstoff ist überlackierbar und UV-beständig?</td><td class="no">nein (Ber-Fix)</td><td class="no">nein (WEICON, OMEGA, MARSTON)</td><td>–/–</td><td>–/–</td></tr>
+    <tr><td>P7</td><td>Produkt</td><td>Womit dichte ich eine undichte Naht an der Karosserie ab?</td><td class="no">nein (3M)</td><td class="no">nein</td><td>–/1</td><td>–/2</td></tr>
+    <tr><td>P8</td><td>Empfehlung</td><td>Welcher ist der beste Dichtstoff für Wohnwagen und Wohnmobile?</td><td class="no">nein – nur SikaLastomer-514</td><td class="yes">ja (2) ✓</td><td><b>1/1</b></td><td>–/–</td></tr>
+    <tr><td>P9</td><td>Empfehlung</td><td>Welche Marken für Kleb- und Dichtstoffe empfehlen Profis im Caravan- und Fahrzeugbau?</td><td class="no">nein – Sika, Bostik, EGO</td><td class="yes">ja (2) ◐ „Caravan-Spezialist“</td><td><b>1/1</b></td><td>–/3</td></tr>
+    <tr><td>P10</td><td>Empfehlung</td><td>Welchen Kleber nehme ich, um ein Solarpanel ohne Bohren aufs Wohnmobildach zu kleben?</td><td class="no">nein – nur Sikaflex 252i/554/522</td><td class="yes">ja (2) ◐ ohne Begründung</td><td><b>1/1</b></td><td>–/–</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="box"><b>Quellen Perplexity (99 URLs):</b> Blogs/Medien 36 % · Händler 23 % · Foren 19 % · Hersteller 18 % · Verzeichnisse 3 %. dekalin.de: <b>1 von 99</b>, Sika: 8.</div>
+    <div class="box"><b>Quellen ChatGPT:</b> überwiegend Herstellerseiten – dekalin.de/.com aber nur bei P1–P3 (Markenfragen), sika.com bei P8–P10 (Empfehlungen). P4/P7 ohne Websuche aus Modellwissen.</div>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>5 / 10</span></div>
+</div>
+
+<!-- ================= 6 KENNZAHLEN + ERKENNTNISSE ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 2 · Auswertung</div>
+  <h2>Dekalin ist bekannt – aber nicht die Antwort</h2>
+  <table>
+    <tr><th>Kennzahl</th><th class="hl">Dekalin</th><th>Sika</th><th>TEROSON</th></tr>
+    <tr><td>Sichtbarkeit Perplexity / ChatGPT</td><td class="hl">40 % / 70 %</td><td>40 % / 60 %</td><td>0 % / 20 %</td></tr>
+    <tr><td>Sichtbarkeit gesamt (20 Antworten)</td><td class="hl">55 %</td><td>50 %</td><td>10 %</td></tr>
+    <tr><td><b>Sichtbarkeit ohne Markenprompts (P4–P10)</b></td><td class="hl"><b>35,7 %</b></td><td><b>57,1 %</b></td><td>14,3 %</td></tr>
+    <tr><td>Empfehlungsprompts P8–P10</td><td class="hl">50 % (Perplexity 0/3)</td><td><b>100 %</b></td><td>16,7 %</td></tr>
+    <tr><td>Platz 1 bei P4–P10</td><td class="hl">2×</td><td><b>7×</b></td><td>0×</td></tr>
+    <tr><td>Share of Voice (31 Produktnennungen P4–P10)</td><td class="hl">22,6 %</td><td><b>41,9 %</b></td><td>6,5 %</td></tr>
+    <tr><td>Eigene Domain als Quelle bei Nicht-Markenfragen</td><td class="hl"><b>0 / 14</b></td><td>6 / 14</td><td>0 / 14</td></tr>
+    <tr><td>Korrektheit der Dekalin-Nennungen (11)</td><td class="hl" colspan="3">✓ 5 · ◐ 4 · ⚠ 2 · ✗ 0 – falsch wird nichts dargestellt, aber oft unvollständig oder auf „Dichten“ verkürzt</td></tr>
+  </table>
+  <h3>7 Kernerkenntnisse</h3>
+  <table>
+    <tr><td style="width:4%"><b>1</b></td><td><b>Dekalin gewinnt nur, wenn die Marke im Prompt steht</b> (6/6). Bei offenen Fragen ist Sika 1,6× so sichtbar und 7× auf Platz 1.</td></tr>
+    <tr><td><b>2</b></td><td><b>dekalin.de wird bei Nicht-Markenfragen nie zitiert (0/14)</b> – selbst das MS-5-Datenblatt zieht Perplexity von reimo.com. Händler und Blogs „besitzen“ die Produktinformation.</td></tr>
+    <tr><td><b>3</b></td><td><b>Sika gewinnt mit Antwortseiten:</b> Caravan-FAQ (P2, P8) und Profi-Broschüre (P9) sind die Primärquellen. In Perplexity P8 sind 4 von 10 Quellen Dekalin-lastige Blogs – genannt wird trotzdem nur Sika.</td></tr>
+    <tr><td><b>4</b></td><td><b>Dekalin wird auf „Dichten“ reduziert:</b> MS-5 – direkter Gegenspieler zu Sikaflex-554 – taucht in offenen Fragen nur einmal auf, ohne Begründung. Der kaufstarke Solar-Use-Case geht an Sika.</td></tr>
+    <tr><td><b>5</b></td><td><b>Eigenschaftsfragen gewinnt, wer Attribute wörtlich und maschinenlesbar publiziert</b> (P6: Nischenanbieter Ber-Fix über wlw.de). dekalin.de liefert Product-Schema mit Preis 0,00 €, ohne Marke, GTIN und Kennwerte.</td></tr>
+    <tr><td><b>6</b></td><td><b>Überraschung 1:</b> ChatGPT (70 %) schlägt Perplexity (40 %). Dekalins Community-Verankerung steckt im Modellwissen (P4 Platz 1 ganz ohne Websuche) – Perplexity nimmt dagegen die direkteste Antwortseite, und das ist fast nie dekalin.de.</td></tr>
+    <tr><td><b>7</b></td><td><b>Überraschung 2:</b> Die Sika-FAQ wird ohne FAQ-Schema zitiert, die Dekalin-FAQ mit Schema nicht – sie enthält „Lorem Ipsum“ und Dubletten. TEROSON ist trotz Henkel-Konzern praktisch unsichtbar (2/20, nie Quelle): Größe schlägt nicht Antwortqualität.</td></tr>
+  </table>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>6 / 10</span></div>
+</div>
+
+<!-- ================= 7 WETTBEWERB ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 2 · Wettbewerbsvergleich</div>
+  <h2>Warum Sika empfohlen wird – und Dekalin nicht</h2>
+  <p class="lead"><b>Auswahl:</b> Sika (Marktführer, Produkte 1:1 austauschbar: Sikaflex-554 ↔ MS-5, SikaLastomer-514 ↔ DEKAseal 8936) und TEROSON/Henkel (gleiches Regal bei Fritz Berger &amp; Reimo, gleiche Kfz-Werkstatt-Herkunft).</p>
+  <table>
+    <tr><th style="width:14%">Ebene</th><th>Sika</th><th class="hl">Dekalin</th><th>TEROSON</th></tr>
+    <tr><td><b>Antwortinhalte</b></td><td>Caravan-FAQ (28 Antworten auf 1 URL), DIY-Einstieg über Fahrzeuggrafik, Profi-Broschüre „Ausbau und Profi-Reparatur von Caravan und Reisemobilen“ als PDF (DE + CH)</td><td class="hl">Viel Content (Ratgeber, Akademie, Videos, Podcast, Buch, KI-Berater) – aber nicht als direkte Antwortseiten aufgebaut; FAQ mit Platzhaltertext</td><td>Keine Caravan-Inhalte, reines B2B-Portal</td></tr>
+    <tr><td><b>Drittquellen</b></td><td>„Sikaflex“ als Gattungsbegriff in Foren, Kategorietexte bei Reimo, Solar-Montageanleitungen von Händlern nennen Sika, Wikipedia-Artikel</td><td class="hl">Im Handel gleich stark (Fritz Berger: 26 vs. 27 Artikel, MS-5 4,96★/52), Blogger-Fans – aber kein Content-Paket für Händler; Wikipedia „Dekalin“ = Chemikalie Decalin</td><td>Handel ja, Content nein</td></tr>
+    <tr><td><b>Produktdaten</b></td><td>Kennwerte als HTML-Tabelle mit Normen (DIN EN 45545-2, ISEGA)</td><td class="hl">Kennwerte nur im PDF/Fließtext; Product-Schema mit <b>Preis 0,00 €</b>, ohne brand/gtin/Attribute</td><td>Datenblätter, dünnes Schema</td></tr>
+    <tr><td><b>Entität</b></td><td>Eine Marke, eine Domain</td><td class="hl">Zwei Domains, zwei Absender (DEKA Kleben &amp; Dichten GmbH vs. DINOL GmbH), drei Ortsangaben, Tippfehler „Deklain“, falsche Seitentitel</td><td>Henkel-Dachmarke</td></tr>
+    <tr><td><b>Ergebnis in Tests</b></td><td>Platz 1 in 7 von 7 Nennungen bei offenen Fragen</td><td class="hl">Nur bei Markenfragen und Dachluke vorn</td><td>2× genannt (Karosserie, Profi)</td></tr>
+  </table>
+  <h3>Konkrete Lücken für Dekalin</h3>
+  <div class="grid2">
+    <table>
+      <tr><td><b>L1</b></td><td>Keine Antwortseite für Solar / SAT / Markise („Kleben statt Bohren“)</td></tr>
+      <tr><td><b>L2</b></td><td>Kein Gegenstück zur Sika-Caravan-FAQ</td></tr>
+      <tr><td><b>L3</b></td><td>Produktdaten nicht maschinenlesbar bzw. fehlerhaft</td></tr>
+      <tr><td><b>L4</b></td><td>Positionierung in KI: „nur Dichten“ – DEKAsyl-Kleber unbekannt</td></tr>
+      <tr><td><b>L5</b></td><td>Keine Material-Ratgeber (Alu, GFK, Kunststoff kleben)</td></tr>
+      <tr><td><b>L6</b></td><td>Händler besitzen die Produktinformation (Datenblatt via Reimo)</td></tr>
+    </table>
+    <table>
+      <tr><td><b>L7</b></td><td>Solar-Ökosystem (Händler-Anleitungen) nennt Sika, nicht Dekalin</td></tr>
+      <tr><td><b>L8</b></td><td>Unklare Entität (zwei Firmen, zwei Domains, Namensverwechslung)</td></tr>
+      <tr><td><b>L9</b></td><td>Kein Profi-/Industrie-Beleg (Referenzen, Freigaben, Broschüre)</td></tr>
+      <tr><td><b>L10</b></td><td>Automotive komplett unsichtbar (P7)</td></tr>
+      <tr><td><b>L11</b></td><td>SEO-Hygiene: falsche Titles, Tippfehler, numerische URLs</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>7 / 10</span></div>
+</div>
+
+<!-- ================= 8 MASSNAHMENPLAN ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 2 · Maßnahmenplan</div>
+  <h2>5 Maßnahmen, priorisiert nach Impact ÷ Aufwand</h2>
+  <table>
+    <tr><th>Rang</th><th style="width:16%">Maßnahme</th><th style="width:25%">Was wird umgesetzt?</th><th style="width:22%">Warum relevant für KI-Systeme?</th><th>Erwartetes Ergebnis / KPI (90 Tage)</th><th>I</th><th>A</th><th>Score</th></tr>
+    <tr class="hl"><td><b>1</b></td><td><b>M1 Antwortseiten je Use Case</b> (Pilot: Solar)</td><td>Je Vorhaben eine Seite: Direktantwort in den ersten 2 Sätzen, Schritte, Tabellen, 8–12 FAQ, Article/HowTo/FAQ/Product-Schema. Danach SAT, Markise, Alu/GFK kleben.</td><td>KI-Systeme zitieren eigenständige, direkt beantwortende Passagen. Schließt L1, L4, L5.</td><td>P10 in beiden Systemen genannt, dekalin.de als Quelle zitiert</td><td>5</td><td>2</td><td><b>2,5</b></td></tr>
+    <tr><td><b>2</b></td><td><b>M3 Produktdaten &amp; Hygiene</b></td><td>Product-Schema ohne 0,00 €, mit brand, gtin, additionalProperty (Kennwerte); Kennwerte als HTML-Tabelle; Merchant-Feed; Titles/URLs/Tippfehler korrigieren.</td><td>Eigenschaftsfragen werden über Attribut-Matching beantwortet (P6). Shopping-/Merchant-Daten fließen in ChatGPT-Produktkarten.</td><td>P6 ≥ 1/2 · Rich Results ohne Fehler</td><td>4</td><td>2</td><td><b>2,0</b></td></tr>
+    <tr><td><b>3</b></td><td><b>M2 Caravan-FAQ-Hub</b></td><td>Bestehende FAQ bereinigen (Lorem Ipsum, Dubletten), auf 40 Antworten nach Bauteil ausbauen, Sprungmarke je Frage.</td><td>Die Sika-FAQ ist Primärquelle für P2/P8 – Dekalin braucht das Gegenstück.</td><td>Perplexity P8 nennt Dekalin · Citation Share ≥ 3/14</td><td>4</td><td>2</td><td><b>2,0</b></td></tr>
+    <tr><td><b>4</b></td><td><b>M4 Entität &amp; Profi-Autorität</b></td><td>Organization-Schema (DINOL/DEKA, sameAs), Wikidata-Eintrag, eine Schreibweise; Branchenseiten mit Fakten (Kunden, Freigaben); Profi-Broschüre als HTML.</td><td>Modelle müssen die Marke eindeutig zuordnen; Profi-Fragen werden über Referenzquellen beantwortet (P9).</td><td>P9 2/2 · P1 vollständig inkl. Industrie</td><td>4</td><td>3</td><td>1,3</td></tr>
+    <tr><td><b>5</b></td><td><b>M5 Drittquellen</b></td><td>Content-Paket für Händler (Texte, Datenblatt-HTML, Video), Solar-Partner-Anleitungen mit MS-5, Fachmedien, Foren-/YouTube-Präsenz.</td><td>79 % der Perplexity-Quellen sind Händler, Blogs und Foren.</td><td>Empfehlungsprompts ≥ 5/6 · SoV ≥ 35 %</td><td>5</td><td>4</td><td>1,25</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="box red"><b>Kern-KPIs</b><br>Sichtbarkeit ohne Markenprompts 35,7 % → ≥ 57 % (Sika-Niveau)<br>Zitate dekalin.de bei Nicht-Markenfragen 0/14 → ≥ 4/14<br>Messung: Re-Test nach 90 Tagen, 3 Läufe je Prompt (Antworten schwanken), monatlich per Prompt-Tracking-Tool.</div>
+    <div class="box"><b>Reihenfolge &amp; Verantwortung</b><br>Woche 1–3: M1-Pilot + M3 (Content + Entwicklung) · Woche 3–6: M2 + weitere Antwortseiten · ab Woche 6: M4 (Marketing/Geschäftsführung) und M5 (Vertrieb/Handel). M1 und M3 bauen das Fundament, auf das M5 verlinkt.</div>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>8 / 10</span></div>
+</div>
+
+<!-- ================= 9 AUSGEARBEITETE MASSNAHME ================= -->
+<div class="page">
+  <div class="kick">Aufgabe 2 · Ausgearbeitete Maßnahme M1</div>
+  <h2>Antwortseite „Solarpanel ohne Bohren aufs Wohnmobildach kleben – mit DEKAsyl MS-5“</h2>
+  <p class="lead"><b>Warum diese Maßnahme:</b> größte und kaufstärkste Einzellücke (P10: Perplexity nennt nur Sika), Premiumprodukt MS-5 direkt gegen Sikaflex-554, Material vorhanden (Datenblatt, /solar/, Video, Set) → in 2–3 Wochen live. Sie ist das Template für alle weiteren Antwortseiten und liefert 12 FAQ für den Hub.</p>
+  <table>
+    <tr><td style="width:18%"><b>URL</b></td><td>dekalin.de/ratgeber/solarpanel-wohnmobil-kleben-ohne-bohren/ · 301-Weiterleitung von /solar/</td></tr>
+    <tr><td><b>Meta-Title</b></td><td>Solarpanel ohne Bohren aufs Wohnmobil kleben: Anleitung</td></tr>
+    <tr><td><b>Meta-Description</b></td><td>Solarpanel ohne Bohren aufs Wohnmobildach kleben: Welcher Kleber, welche Vorbereitung, wie lange aushärten? Anleitung mit DEKAsyl MS-5, Tabelle und FAQ.</td></tr>
+    <tr><td><b>Seitenaufbau</b></td><td>H1 · Kurzantwort · „Das Wichtigste in Kürze“ · Welcher Kleber? · Starres vs. flexibles Modul (Tabelle) · Das brauchst du · <b>8 Schritte</b> · Zeiten &amp; Temperaturen (Tabelle) · Haftgründe (Tabelle) · MS-1/MS-2/MS-5 · MS-5 vs. Sikaflex-554 · Häufige Fehler · Technische Daten (HTML) · <b>12 FAQ</b> · Bezugsquellen + Downloads</td></tr>
+  </table>
+  <div class="box red" style="margin:6px 0"><b>Kurz gesagt (erste zwei Sätze – die zitierfähige Direktantwort):</b> „Ein Solarpanel klebst du ohne Bohren mit einem elastischen High-Tack-Klebstoff auf MS-Polymer-Basis wie DEKAsyl MS-5 aufs Wohnmobildach – bei starren Modulen werden die Spoiler oder Halter verklebt, halbflexible Module klebst du direkt. MS-5 haftet ohne Primer auf Aluminium, GFK, lackiertem Blech und Glas, bleibt von −40 °C bis +120 °C elastisch und hält die Teile dank hoher Anfangshaftung meist ohne Klemmen in Position.“</div>
+  <div class="grid2">
+    <div>
+      <h3>Die 8 Schritte (Werte laut Datenblatt)</h3>
+      <table>
+        <tr><td>1 Planen</td><td>Spoiler am Modul montieren, Klebeflächen markieren; +5 bis +35 °C, im Schatten</td></tr>
+        <tr><td>2 Reinigen</td><td>DEKACLEAN ULTRA – sauber, trocken, staub- und fettfrei</td></tr>
+        <tr><td>3 Haftung</td><td>Primerlos auf Alu, GFK, lackiertem Metall, Glas; DEKAVATOR 22 NF bei hoher Last/Feuchte; nicht auf PE/PP/Teflon</td></tr>
+        <tr><td>4 Auftragen</td><td>7-mm-Raupe → 3–5 mm Naht; mind. 2 mm Klebeschicht</td></tr>
+        <tr><td>5 Fügen</td><td>Innerhalb 15 min; High Tack, meist ohne Klemmen</td></tr>
+        <tr><td>6 Abdichten</td><td>Abschlussnaht + Kabeldurchführung, mit DEKAFINISHER-Spachtel binnen 12 min glätten</td></tr>
+        <tr><td>7 Aushärten</td><td>ca. 4 mm/24 h; Endfestigkeit 24–48 h – erst dann fahren</td></tr>
+        <tr><td>8 Lackieren</td><td>Nass in nass ab ca. 10 min, beste Haftung nach 4 h</td></tr>
+      </table>
+      <h3>Auszug aus den 12 FAQ</h3>
+      <p class="small">Welcher Kleber eignet sich …? · Muss ich einen Primer verwenden? · Wie lange aushärten, bevor ich losfahre? · Hält die Verklebung die Hitze unter dem Modul aus? · Hält ein geklebtes Solarpanel bei Autobahnfahrt? · Flexible Module direkt kleben? · Wie viel Kleber brauche ich? · Kann ich das Panel später wieder abnehmen? · Unterschied MS-5 vs. Sikaflex-554? · Kabeldurchführung abdichten?</p>
+    </div>
+    <div>
+      <h3>Schema-Markup (validiertes JSON-LD, Auszug)</h3>
+<pre>{ "@context":"https://schema.org", "@graph":[
+ {"@type":"Article", "headline":"Solarpanel ohne Bohren
+   aufs Wohnmobildach kleben – mit DEKAsyl MS-5", …},
+ {"@type":"HowTo", "step":[ …8 Schritte… ]},
+ {"@type":"FAQPage", "mainEntity":[ …12 Fragen… ]},
+ {"@type":"Product",
+  "name":"DEKAsyl MS-5 High Tack Kleb- und Dichtstoff
+          weiß 290 ml",
+  "sku":"6252234", "mpn":"62522 34",
+  "gtin13":"4046085125227",
+  "brand":{"@type":"Brand","name":"DEKALIN"},
+  "material":"MS-Polymer",
+  "additionalProperty":[
+   {"name":"Temperaturbeständigkeit",
+    "minValue":-40,"maxValue":120,"unitCode":"CEL"},
+   {"name":"Hautbildungszeit","value":12,"unitCode":"MIN"},
+   {"name":"Shore-A-Härte","value":55},
+   … 26 Eigenschaften … ],
+  "offers":{"@type":"AggregateOffer",
+   "lowPrice":17.99,"highPrice":27.60,
+   "priceCurrency":"EUR"} },
+ {"@type":"BreadcrumbList", …},
+ {"@type":"Organization", "name":"DEKALIN", …} ]}</pre>
+      <p class="small"><b>Umsetzung:</b> Checkliste für WordPress (heutige Seite: Yoast, Redirect, WooCommerce-Schema mit 0,00 € abschalten) und Shopify (Blog-Handle, Metafeld-JSON-LD). Abnahme: Rich-Results-Test, Roh-HTML-Check, Re-Test P10 nach 2/6/12 Wochen. Vollständiger Seitentext und komplettes JSON-LD liegen vor (eigene Datei).</p>
+    </div>
+  </div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>9 / 10</span></div>
+</div>
+
+<!-- ================= 10 ANNAHMEN + KI ================= -->
+<div class="page">
+  <div class="kick">Annahmen · offene Punkte · KI-Einsatz</div>
+  <h2>Was ich angenommen habe – und was ich mit Dekalin klären würde</h2>
+  <table>
+    <tr><th style="width:24%">Thema</th><th>Annahme</th><th style="width:28%">Begründung / zu klären</th></tr>
+    <tr><td>Preise</td><td>MS-5 290 ml 19,95 € · 600 ml 32,95 € · Set 69,95 € · Versandfrei ab 49 €</td><td>Handel 16,95–27,60 €; bewusst nicht unter Fachhandel (Kanalkonflikt)</td></tr>
+    <tr><td>Varianten</td><td>Weiß/Schwarz; Schwarz nur 290 ml; kein Grau</td><td>laut Datenblatt; Grau gibt es bei MS-1/MS-2</td></tr>
+    <tr><td>Ergiebigkeit</td><td>ca. 7 m Raupe (Ø 7 mm) je 290 ml</td><td>eigene Rechnung, Herstellerangabe fehlt</td></tr>
+    <tr><td>Betreiber / Impressum</td><td>Shop durch Markeninhaber</td><td>DEKA Kleben &amp; Dichten GmbH oder DINOL GmbH?</td></tr>
+    <tr><td>Bewertungen</td><td>Zahlen im Prototyp = Beispiele</td><td>Händlerbewertungen (Fritz Berger 4,96★) nur mit Erlaubnis</td></tr>
+    <tr><td>Garantie / Beratung</td><td>„Anwendungsversprechen“ + Foto-Beratung</td><td>Bedingungen und Kanal festlegen</td></tr>
+    <tr><td>Vergleich Sikaflex-554</td><td>nur Datenblattwerte, Quelle genannt</td><td>rechtliche Freigabe (§ 6 UWG)</td></tr>
+    <tr><td>KI-Tests</td><td>Momentaufnahme, je 1 Lauf, ausgeloggt</td><td>Antworten schwanken → laufendes Tracking</td></tr>
+  </table>
+  <h3>Wie ich KI in dieser Challenge eingesetzt habe</h3>
+  <table>
+    <tr><th>Tool</th><th>Wofür</th><th>Wo ich nachbessern musste</th><th>Grenze</th></tr>
+    <tr><td><b>Claude (Agenten)</b></td><td>Website-Recherche im Roh-HTML (73 Abrufe), Konzepttexte, Auswertung der Tests</td><td>Ein Agent nahm ohne Recherche „Innotec“ als Wettbewerber an → auf Sika/TEROSON korrigiert; alle technischen Werte nur aus dem Datenblatt zugelassen</td><td>Füllt Lücken mit plausiblen Werten → Annahmen müssen markiert werden</td></tr>
+    <tr><td><b>Browser-Automatisierung</b></td><td>Vision-Live-Demo analysieren (Section-/Block-Namen)</td><td>Doku nennt kaum Einstellungsnamen → Namen direkt aus der Demo gelesen, Rest als „im Editor prüfen“ markiert</td><td>Plattform-Eigenheiten (Logins, Pop-ups)</td></tr>
+    <tr><td><b>Shopify per Skript</b></td><td>Shop komplett aus den Konzept-Dateien gebaut: Produkte, Kollektionen, Menüs per Admin-API; Vorlage, Header, Footer per Theme-Editor-API – Code &amp; Begründungen: <a href="https://github.com/liamcolin9614-spec/netshake-challenge-dekalin">GitHub</a></td><td>Theme-Testversion sperrt Code-Editor → auf die Speicher-Aufrufe des Editors umgestellt; Shopify-Limit 25 Sections → Abstände statt Spacer</td><td>Bilder/Logo nur Platzhalter, Texte &amp; Urteil bleiben Handarbeit</td></tr>
+    <tr><td><b>ChatGPT &amp; Perplexity</b></td><td>Die 20 Sichtbarkeitstests selbst</td><td>ChatGPT zeigt ausgeloggt nur Quellen-Chips → Domains darüber erfasst</td><td>Nicht deterministisch, Ergebnis ist eine Momentaufnahme</td></tr>
+  </table>
+  <div class="box red" style="margin-top:8px"><b>Fazit für Dekalin:</b> Die Marke hat, was Sika hat – Know-how, Fans, Handel. Was fehlt, ist die Form: Antworten, die eine KI direkt zitieren kann, und Produktdaten, die eine Maschine lesen kann. Shop und Antwortseiten folgen deshalb demselben Prinzip: <b>Vom Vorhaben des Kunden her gedacht.</b></div>
+  <div class="foot"><span>Dekalin · Challenge Junior E-Commerce Manager</span><span>10 / 10</span></div>
+</div>
+
+</body>
+</html>

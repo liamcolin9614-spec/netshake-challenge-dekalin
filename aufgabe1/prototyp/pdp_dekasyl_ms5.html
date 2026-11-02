@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEKAsyl MS-5 – PDP-Prototyp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#D42A3B; --red-h:#B0202F; --ink:#262626; --ink2:#4F4F4F; --bg:#FFFFFF; --soft:#F5F5F5; --line:#EBEBEB;
+  --green:#2E7D32; --yellow:#F2B705; --radius:14px; --wrap:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Barlow,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(28px,3.4vw,42px);font-weight:800}
+h3{font-size:20px;font-weight:700}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.muted{color:var(--ink2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 17px Barlow;border-radius:6px;cursor:pointer;border:0;transition:.15s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-h)}
+.btn-ghost{border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:12px 22px}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.proto-flag{position:fixed;left:12px;bottom:12px;z-index:90;background:#111;color:#fff;font-size:12px;padding:6px 10px;border-radius:20px;opacity:.85}
+
+/* ---------- Announcement + secondary menu ---------- */
+.ann{background:var(--ink);color:#fff;font-size:14px;font-weight:500}
+.ann .wrap{display:flex;align-items:center;justify-content:center;gap:18px;height:38px}
+.ann button{background:none;border:0;color:#fff;opacity:.7;cursor:pointer;font-size:16px}
+.ann-text{min-width:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.secmenu{border-bottom:1px solid var(--line);font-size:14px;color:var(--ink2)}
+.secmenu .wrap{display:flex;justify-content:space-between;height:36px;align-items:center}
+.secmenu nav a{margin-right:20px}.secmenu nav a:hover{color:var(--red)}
+/* ---------- Header ---------- */
+header.hdr{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.hdr-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;height:76px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:28px;letter-spacing:.02em}
+.logo-mark{width:36px;height:36px;border-radius:8px;background:var(--red);color:#fff;display:grid;place-items:center;font-size:22px}
+.search{display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:25px;height:46px;padding:0 18px;color:var(--ink2);font-size:15px;max-width:560px;width:100%;justify-self:center}
+.hdr-icons{display:flex;gap:18px;align-items:center}
+.icon{width:24px;height:24px}
+.cart{position:relative}.cart b{position:absolute;top:-6px;right:-8px;background:var(--red);color:#fff;font-size:11px;border-radius:10px;padding:1px 6px}
+.mainnav{display:flex;gap:4px;height:50px;align-items:stretch}
+.mainnav>li{list-style:none;position:static}
+.mainnav>li>a{display:flex;align-items:center;gap:6px;padding:0 14px;font-weight:600;font-size:16px;border-bottom:3px solid transparent}
+.mainnav>li:hover>a{border-color:var(--red);color:var(--red)}
+.mainnav .sep{width:1px;background:var(--line);margin:12px 8px}
+.badge{background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:.05em}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.08);display:none}
+.mainnav>li:hover .mega{display:block}
+.mega .wrap{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:40px;padding:34px 24px 38px}
+.mega h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:14px}
+.mega ul{list-style:none}.mega li{margin-bottom:10px}.mega li a:hover{color:var(--red)}
+.mega .all{font-weight:700;color:var(--red)}
+.mega-promo{background:var(--soft);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:180px}
+.mega-promo strong{font-size:20px;line-height:1.2}
+.burger{display:none}
+/* ---------- Breadcrumbs ---------- */
+.crumbs{font-size:14px;color:var(--ink2);padding:18px 0}.crumbs a:hover{color:var(--red)}
+/* ---------- Main product ---------- */
+.pdp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;padding-bottom:64px}
+.gallery{display:grid;grid-template-columns:76px 1fr;gap:16px;position:sticky;top:96px;align-self:start}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;background:var(--soft);aspect-ratio:1}
+.thumb.on{border-color:var(--ink)}
+.slides{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--soft);aspect-ratio:1}
+.slide{position:absolute;inset:0;display:none;padding:34px}
+.slide.on{display:block}
+.slide .hd{font-size:clamp(24px,2.6vw,34px);font-weight:800;max-width:70%;line-height:1.1}
+.callouts{position:absolute;left:34px;bottom:34px;display:flex;flex-direction:column;gap:8px}
+.callouts span{background:#fff;border-radius:30px;padding:7px 14px;font-weight:600;font-size:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;gap:8px;align-items:center}
+.callouts span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.slide .art{position:absolute;right:6%;bottom:6%;width:46%}
+.info{display:flex;flex-direction:column;gap:16px}
+.infobox{display:flex;align-items:center;gap:12px;background:var(--soft);border-radius:10px;padding:10px 14px;font-weight:600;font-size:15px}
+.infobox i{width:34px;height:34px;border-radius:8px;background:#fff;display:grid;place-items:center;font-style:normal}
+.ptitle{font-size:clamp(28px,3vw,38px);font-weight:800}
+.usp{font-size:18px;font-weight:500;color:var(--ink2);margin-top:-6px}
+.stars{display:flex;align-items:center;gap:8px;font-size:15px}.stars b{color:#E8A317;letter-spacing:2px}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price strong{font-size:32px;font-weight:800}
+.price small{color:var(--ink2);font-size:14px}
+.opt-label{font-weight:700;font-size:15px;margin-bottom:8px}
+.opt-label span{font-weight:500;color:var(--ink2)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.sw{border:1.5px solid var(--line);border-radius:10px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;background:#fff}
+.sw .dot{width:30px;height:30px;border-radius:7px;border:1px solid #ddd}
+.sw.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.sw.off{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.hint{font-size:14px;color:var(--ink2);margin-top:8px}.hint a{color:var(--red);font-weight:600}
+.stock{display:flex;align-items:center;gap:8px;color:var(--green);font-weight:700}
+.stock::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(46,125,50,.15)}
+.atc{width:100%;height:64px;font-size:19px}
+.iconlist{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.iconlist div{background:var(--soft);border-radius:10px;padding:12px;font-size:14px;font-weight:600;display:flex;gap:10px;align-items:center}
+.shortdesc{list-style:none;display:grid;gap:8px}
+.shortdesc li{padding-left:28px;position:relative}
+.shortdesc li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:800}
+.setbox{border:1.5px dashed var(--red);border-radius:12px;padding:14px 16px;display:flex;gap:14px;align-items:center;font-size:15px}
+.setbox b{color:var(--red)}
+details.acc{border-top:1px solid var(--line)}details.acc:last-of-type{border-bottom:1px solid var(--line)}
+details.acc summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;display:flex;justify-content:space-between}
+details.acc summary::after{content:"+";font-size:22px;line-height:1}details.acc[open] summary::after{content:"–"}
+details.acc .body{padding:0 0 16px;color:var(--ink2);font-size:15px}
+/* ---------- Generic sections ---------- */
+section.s{padding:88px 0}
+section.soft{background:var(--soft)}
+.s-head{max-width:720px;margin-bottom:44px}
+.s-head p{font-size:18px;color:var(--ink2);margin-top:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--line)}
+.card .ic{width:52px;height:52px;border-radius:12px;background:#FBE9EB;color:var(--red);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+.card p{color:var(--ink2);margin-top:6px}
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.app{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(160deg,#3b4048,#1d2024);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:flex-end}
+.app:nth-child(2){background:linear-gradient(160deg,#5c6b78,#27313a)}
+.app:nth-child(3){background:linear-gradient(160deg,#7a6f62,#2f2a25)}
+.app:nth-child(4){background:linear-gradient(160deg,#41617a,#1c2b36)}
+.app:nth-child(5){background:linear-gradient(160deg,#6b6b6b,#2b2b2b)}
+.app:nth-child(6){background:linear-gradient(160deg,#8a5a4a,#3a2620)}
+.app .em{position:absolute;top:18px;right:20px;font-size:44px;opacity:.9}
+.app h3{font-size:22px}.app span{font-size:14px;opacity:.85}
+.app:hover{transform:translateY(-2px);transition:.2s}
+.ampel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.amp{border-radius:var(--radius);padding:26px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--green)}
+.amp.y{border-top-color:var(--yellow)}.amp.r{border-top-color:var(--red)}
+.amp h3{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.amp .pill{font-size:12px;background:var(--soft);border-radius:20px;padding:4px 10px;display:inline-block;margin:4px 4px 0 0;font-weight:600}
+.note{margin-top:22px;font-size:15px;color:var(--ink2)}
+.story{background:var(--ink);color:#fff;padding:0}
+.story-hero{position:relative;min-height:440px;display:flex;align-items:flex-end;background:radial-gradient(1200px 500px at 80% 20%,rgba(212,42,59,.35),transparent),linear-gradient(120deg,#1a1a1a,#2c2c2c);}
+.story-hero .wrap{padding-bottom:64px;padding-top:120px}
+.story-hero h2{font-size:clamp(36px,5vw,64px)}
+.story-hero p{font-size:20px;opacity:.85;max-width:620px;margin:14px 0 26px}
+.story .btn-ghost{border-color:#fff;color:#fff}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:56px 24px 88px}
+.tl{border-top:2px solid rgba(255,255,255,.2);padding-top:22px}
+.tl .yr{font-size:44px;font-weight:800;color:var(--red)}
+.tl p{opacity:.8;margin-top:8px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:st}
+.step{background:#fff;border-radius:var(--radius);padding:26px;border:1px solid var(--line);position:relative}
+.step::before{counter-increment:st;content:counter(st);width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;display:grid;place-items:center;margin-bottom:16px}
+.step .t{position:absolute;top:28px;right:22px;font-size:12px;font-weight:700;background:var(--soft);padding:4px 10px;border-radius:20px}
+.step p{color:var(--ink2);font-size:15px;margin-top:6px}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);font-size:15px}
+table.cmp th,table.cmp td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp th{background:var(--soft);font-size:14px}
+table.cmp .hl{background:#FDF2F3;font-weight:700}
+table.cmp th.hl{background:var(--red);color:#fff}
+.dots{color:var(--red);letter-spacing:3px}
+.src{font-size:12px;color:var(--ink2);margin-top:10px}
+.cmp-wrap{overflow-x:auto;margin-bottom:44px}
+.setpromo{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:#fff;border-radius:20px;padding:44px;border:1px solid var(--line)}
+.setart{background:var(--soft);border-radius:16px;aspect-ratio:4/3;display:grid;place-items:center;gap:0;padding:24px}
+.setlist{list-style:none;margin:18px 0}.setlist li{padding:8px 0;border-bottom:1px solid var(--line)}
+.setprice{display:flex;align-items:baseline;gap:12px;margin:16px 0 18px}.setprice strong{font-size:30px}
+.setprice s{color:var(--ink2)}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:24px;overflow-x:auto}
+.tab{padding:14px 18px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;background:none;border-top:0;border-left:0;border-right:0;font-family:inherit;font-size:16px;color:var(--ink2)}
+.tab.on{border-bottom-color:var(--red);color:var(--ink)}
+.pane{display:none}.pane.on{display:block}
+table.spec{width:100%;border-collapse:collapse;font-size:15px}
+table.spec td{padding:11px 0;border-bottom:1px solid var(--line)}table.spec td:first-child{color:var(--ink2);width:46%}
+.dl{display:flex;flex-direction:column;gap:10px}.dl a{display:flex;justify-content:space-between;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;font-weight:600}.dl a:hover{border-color:var(--ink)}
+.service{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service .card{text-align:left}
+.faq{max-width:860px}
+.reviews{display:grid;grid-template-columns:300px 1fr;gap:40px}
+.score{background:var(--soft);border-radius:var(--radius);padding:28px;text-align:center}
+.score strong{font-size:56px;font-weight:800;display:block}
+.rv{border-bottom:1px solid var(--line);padding:18px 0}.rv b{color:#E8A317}
+.tag{font-size:11px;background:var(--soft);padding:2px 8px;border-radius:10px;margin-left:8px;color:var(--ink2)}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pc{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff}
+.pc .im{background:var(--soft);aspect-ratio:1;display:grid;place-items:center;padding:24px}
+.pc .tx{padding:16px}.pc .tx small{color:var(--ink2);display:block}.pc .tx b{display:block;margin:2px 0 6px}
+.pc .qa{margin-top:10px;width:100%;padding:10px;font-size:14px}
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:#fff;padding:72px 0 28px}
+.f-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
+footer h5{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:16px}
+footer ul{list-style:none}footer li{margin-bottom:10px;opacity:.9}footer li a:hover{color:#fff;text-decoration:underline}
+.f-news{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);padding:34px 0;margin:48px 0 28px}
+.f-news form{display:flex;gap:10px}.f-news input{flex:1;height:52px;border-radius:6px;border:0;padding:0 16px;font:16px Barlow}
+.f-news .btn{height:52px;padding:0 26px}
+.f-news label{display:block;font-size:13px;opacity:.7;margin-top:10px}
+.f-trust{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px}
+.pay{display:flex;gap:8px;flex-wrap:wrap}.pay span{background:#fff;color:#111;border-radius:5px;font-size:12px;font-weight:700;padding:5px 9px}
+.f-legal{font-size:13px;opacity:.6;margin-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.social{display:flex;gap:10px;margin-top:16px}.social span{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:13px}
+/* ---------- Mobile ---------- */
+.mdock{display:none}
+@media (max-width:1100px){
+  .mainnav,.secmenu{display:none}
+  .burger{display:block}
+  .hdr-row{grid-template-columns:auto 1fr auto;height:64px}
+  .hdr-row .search{display:none}
+  .logo{justify-self:center;font-size:24px}
+  .msearch{display:flex !important;margin:0 0 12px}
+}
+.msearch{display:none}
+@media (max-width:860px){
+  .wrap{padding:0 16px}
+  .pdp{grid-template-columns:1fr;gap:24px}
+  .gallery{position:static;grid-template-columns:1fr}
+  .thumbs{flex-direction:row;order:2;overflow-x:auto}.thumb{width:62px;flex:0 0 62px}
+  .slide{padding:22px}.callouts{left:22px;bottom:22px}.callouts span{font-size:13px}
+  .grid3,.apps,.ampel,.service,.prods{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:1fr;padding:40px 16px 64px}
+  .setpromo{grid-template-columns:1fr;padding:24px}
+  .reviews{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr 1fr}.f-news{grid-template-columns:1fr}
+  section.s{padding:60px 0}
+  .iconlist{grid-template-columns:1fr}
+  .mdock{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:8px 0 12px;font-size:11px;font-weight:600}
+  .mdock a{display:flex;flex-direction:column;align-items:center;gap:2px}
+}
+@media (max-width:520px){
+  .grid3,.apps,.ampel,.service,.prods,.steps{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr}
+  .f-news form{flex-direction:column}
+  .apps{grid-template-columns:1fr 1fr}.app{aspect-ratio:1}.app h3{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M6 7h14l-1.5 9H7.5zM6 7 5 3H2M9 20.5a1 1 0 1 0 0-.01M17 20.5a1 1 0 1 0 0-.01"/></symbol>
+    <symbol id="user" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4"/></symbol>
+    <symbol id="menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <!-- Kartusche -->
+    <symbol id="kart" viewBox="0 0 120 300">
+      <rect x="52" y="0" width="16" height="44" rx="3" fill="#cfcfcf"/>
+      <path d="M44 44h32l6 22H38z" fill="#bdbdbd"/>
+      <rect x="22" y="64" width="76" height="226" rx="10" fill="currentColor"/>
+      <rect x="22" y="64" width="76" height="226" rx="10" fill="url(#g)" opacity=".35"/>
+      <rect x="22" y="110" width="76" height="120" fill="#D42A3B"/>
+      <text x="60" y="140" text-anchor="middle" font-family="Barlow" font-weight="800" font-size="12" fill="#fff">DEKALIN</text>
+      <text x="60" y="170" text-anchor="middle" font-family="Barlow" font-weight="800" font-size="15" fill="#fff">DEKAsyl</text>
+      <text x="60" y="196" text-anchor="middle" font-family="Barlow" font-weight="800" font-size="26" fill="#fff">MS-5</text>
+      <text x="60" y="217" text-anchor="middle" font-family="Barlow" font-weight="600" font-size="9" fill="#fff">HIGH TACK</text>
+      <rect x="22" y="272" width="76" height="18" rx="4" fill="#9e9e9e"/>
+      <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".35" stop-color="#fff" stop-opacity=".9"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ ANNOUNCEMENT BAR (Vision: announcement-bar) ============ -->
+<div class="ann"><div class="wrap">
+  <button aria-label="zurück" onclick="ann(-1)">‹</button>
+  <div class="ann-text" id="annText">✓ Versand in 1–3 Werktagen · ab 49 € versandkostenfrei</div>
+  <button aria-label="weiter" onclick="ann(1)">›</button>
+</div></div>
+
+<!-- ============ SECONDARY MENU (Vision: header-secondary-menu) ============ -->
+<div class="secmenu"><div class="wrap">
+  <nav><a href="#">Kostenlose Beratung</a><a href="#">Produktfinder</a><a href="#">Anleitungen</a><a href="#">Händler &amp; Gewerbe</a></nav>
+  <span>📞 Anwendungsfragen? support@dekalin.de</span>
+</div></div>
+
+<!-- ============ HEADER (Vision: header + Mega-Menu-Blöcke) ============ -->
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-row">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="burger btn" style="background:none;padding:0" aria-label="Menü" onclick="document.getElementById('drawer').showModal()"><svg class="icon"><use href="#menu"/></svg></button>
+        <a class="logo" href="#"><span class="logo-mark">D</span>DEKALIN</a>
+      </div>
+      <div class="search"><svg class="icon"><use href="#search"/></svg>Wonach suchst du? z. B. Dachluke abdichten</div>
+      <div class="hdr-icons">
+        <svg class="icon"><use href="#user"/></svg>
+        <span class="cart"><svg class="icon"><use href="#cart"/></svg><b id="cartCount">0</b></span>
+      </div>
+    </div>
+    <div class="msearch search"><svg class="icon"><use href="#search"/></svg>Wonach suchst du? z. B. Dachluke abdichten</div>
+    <ul class="mainnav">
+      <li><a href="#">Abdichten</a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Am Dach</h4><ul><li><a href="#">Fenster &amp; Dachluken abdichten</a></li><li><a href="#">Dachhauben &amp; Kabeldurchführungen</a></li><li><a href="#">Fugen &amp; Nähte außen</a></li><li><a class="all" href="#">Alle Produkte zum Abdichten ›</a></li></ul></div>
+          <div><h4>Wände, Türen &amp; innen</h4><ul><li><a href="#">Serviceklappen &amp; Türen (wiederlösbar)</a></li><li><a href="#">Kantenleisten &amp; Keder</a></li><li><a href="#">Bad &amp; Küche (innen)</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Damit Wasser draußen bleibt.</span><strong>Welche Dichtmasse für die Dachluke?</strong><a class="all" href="#">Zur Anleitung ›</a></div>
+        </div></div></li>
+      <li><a href="#">Kleben &amp; Montieren <span class="badge">TOP</span></a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Aufs Dach</h4><ul><li><a href="#">Solarmodul kleben</a></li><li><a href="#">SAT-Anlage &amp; Antenne kleben</a></li><li><a href="#">Markise, Dachträger &amp; Anbauteile</a></li><li><a class="all" href="#">Alle Produkte zum Kleben ›</a></li></ul></div>
+          <div><h4>Bauteile &amp; Ausbau</h4><ul><li><a href="#">Fenster &amp; Scheiben einkleben</a></li><li><a href="#">Halter, Leisten &amp; Innenausbau</a></li><li><a href="#">Seitenwände &amp; Großflächen (Profi)</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Hält. Ohne Bohren.</span><strong>Solar-Montage-Set: alles in einem Paket</strong><a class="all" href="#set">Zum Set ›</a></div>
+        </div></div></li>
+      <li><a href="#">Reparieren &amp; Schützen</a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Reparieren</h4><ul><li><a href="#">Kunststoff &amp; GFK reparieren</a></li><li><a href="#">Ausgerissene Schraublöcher</a></li><li><a href="#">Undichte Stellen &amp; Wasserschaden</a></li><li><a class="all" href="#">Alle anzeigen ›</a></li></ul></div>
+          <div><h4>Schützen</h4><ul><li><a href="#">Unterbodenschutz</a></li><li><a href="#">Hohlraumschutz</a></li><li><a href="#">Radkästen</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Gegen Risse, Löcher und Rost.</span><strong>Unterbodenschutz in 3 Schritten</strong><a class="all" href="#">Anleitung ›</a></div>
+        </div></div></li>
+      <li><a href="#">Reinigen &amp; Zubehör</a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Vorbereiten &amp; Finish</h4><ul><li><a href="#">Reinigen &amp; Entfetten</a></li><li><a href="#">Haftvermittler (Primer)</a></li><li><a href="#">Fugen glätten &amp; Regenstreifen</a></li><li><a class="all" href="#">Alles Zubehör ›</a></li></ul></div>
+          <div><h4>Sets &amp; Werkzeug</h4><ul><li><a href="#">Klebe- &amp; Dichtsets</a></li><li><a href="#">Kartuschenpressen &amp; Werkzeug</a></li><li><a href="#">Bestseller</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Damit es hält.</span><strong>Was Profis immer dabeihaben</strong><a class="all" href="#">Bestseller ›</a></div>
+        </div></div></li>
+      <li class="sep" aria-hidden="true"></li>
+      <li><a href="#">Ratgeber</a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Richtiges Produkt finden</h4><ul><li><a href="#">Produktfinder (3 Fragen)</a></li><li><a href="#">Welcher DEKAsyl? MS-1, MS-2, MS-5</a></li><li><a href="#">Häufige Fragen (FAQ)</a></li></ul></div>
+          <div><h4>Anleitungen &amp; Downloads</h4><ul><li><a href="#">Schritt-für-Schritt-Anleitungen</a></li><li><a href="#">Video-Akademie</a></li><li><a href="#">Datenblätter &amp; Sicherheitsdatenblätter</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Richtig machen, beim ersten Mal.</span><strong>Das Buch vom Klebepapst: „Klebt nicht gibt's nicht!“</strong><a class="all" href="#">Ansehen ›</a></div>
+        </div></div></li>
+      <li><a href="#">Warum Dekalin</a>
+        <div class="mega"><div class="wrap">
+          <div><h4>Erfahrung</h4><ul><li><a href="#">Seit 1907: unsere Geschichte</a></li><li><a href="#">Der „Klebepapst“ &amp; sein Buch</a></li><li><a href="#">Auszeichnungen</a></li></ul></div>
+          <div><h4>Service</h4><ul><li><a href="#">Kostenlose Anwendungsberatung</a></li><li><a href="#">Schulungen nach DIN 2304</a></li><li><a href="#">Für Gewerbe &amp; Händler</a></li></ul></div>
+          <div class="mega-promo"><span class="muted">Kleben &amp; Dichten seit 1907.</span><strong>Frag uns: kostenlose Anwendungsberatung</strong><a class="all" href="#">Kontakt ›</a></div>
+        </div></div></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Mobile-Drawer (Vision: header-mobile-navigation) -->
+<dialog id="drawer" style="margin:0;height:100vh;max-height:100vh;width:min(420px,90vw);border:0;padding:0">
+  <div style="padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)"><b>Menü</b><button class="btn" style="background:none;font-size:22px" onclick="this.closest('dialog').close()">✕</button></div>
+  <div style="padding:8px 20px">
+    <p class="eyebrow" style="margin-top:14px">Was hast du vor?</p>
+    <details class="acc"><summary>Abdichten</summary><div class="body">Fenster &amp; Dachluken · Dachhauben &amp; Durchführungen · Fugen &amp; Nähte außen · Serviceklappen &amp; Türen · Kantenleisten &amp; Keder · Bad &amp; Küche</div></details>
+    <details class="acc"><summary>Kleben &amp; Montieren <span class="badge">TOP</span></summary><div class="body">Solarmodul · SAT-Anlage &amp; Antenne · Markise, Dachträger &amp; Anbauteile · Fenster &amp; Scheiben · Halter &amp; Innenausbau · Seitenwände (Profi)</div></details>
+    <details class="acc"><summary>Reparieren &amp; Schützen</summary><div class="body">Kunststoff &amp; GFK · Schraublöcher · Wasserschaden · Unterboden · Hohlraum · Radkästen</div></details>
+    <details class="acc"><summary>Reinigen &amp; Zubehör</summary><div class="body">Reinigen &amp; Entfetten · Haftvermittler · Fugen-Finish · Sets · Kartuschenpressen · Bestseller</div></details>
+    <p class="eyebrow" style="margin-top:22px">Warum Dekalin</p>
+    <details class="acc"><summary>Ratgeber</summary><div class="body">Produktfinder · Welcher DEKAsyl? · FAQ · Anleitungen · Video-Akademie · Datenblätter</div></details>
+    <details class="acc"><summary>Warum Dekalin</summary><div class="body">Seit 1907 · Klebepapst &amp; Buch · Auszeichnungen · Beratung · Schulungen · Gewerbe</div></details>
+  </div>
+</dialog>
+
+<main>
+<div class="wrap">
+  <!-- ============ BREADCRUMBS ============ -->
+  <div class="crumbs"><a href="#">Start</a> › <a href="#">Kleben &amp; Montieren</a> › <a href="#">Solarmodul kleben</a> › DEKAsyl MS-5</div>
+
+  <!-- ============ MAIN PRODUCT (Vision: main-product) ============ -->
+  <div class="pdp">
+    <div class="gallery">
+      <div class="thumbs" id="thumbs"></div>
+      <div class="slides" id="slides">
+        <div class="slide on" data-t="1">
+          <div class="hd">Kleben statt Bohren.</div>
+          <svg class="art" viewBox="0 0 120 300" style="color:#f4f4f4;width:26%;right:12%;bottom:8%"><use href="#kart"/></svg>
+          <div class="callouts"><span>Hält sofort – weniger Klemmen</span><span>−40 bis +120 °C</span><span>Ohne Primer auf Alu, GFK &amp; Glas</span></div>
+        </div>
+        <div class="slide" data-t="2" style="background:linear-gradient(180deg,#cfe3f1,#eef3f6)">
+          <div class="hd">Solarmodul ohne ein Bohrloch</div>
+          <svg viewBox="0 0 400 260" style="position:absolute;right:4%;bottom:14%;width:70%">
+            <path d="M10 220 L390 220 L360 250 L40 250Z" fill="#e9e9e9"/>
+            <rect x="40" y="150" width="320" height="70" rx="6" fill="#f7f7f7" stroke="#ddd"/>
+            <g transform="translate(90 70) skewX(-12)"><rect width="230" height="80" rx="4" fill="#1c2f4a"/><g stroke="#3a5a86" stroke-width="2"><path d="M57 0v80M115 0v80M172 0v80M0 40h230"/></g></g>
+            <path d="M88 150h40l-6-12H94zM270 150h40l-6-12h-28z" fill="#bbb"/>
+            <path d="M84 150q24 6 48 0M266 150q24 6 48 0" stroke="#D42A3B" stroke-width="5" fill="none"/>
+          </svg>
+          <div class="callouts"><span>Spoiler aufkleben – Dach bleibt dicht</span><span>Klebt &amp; dichtet in einem Schritt</span></div>
+        </div>
+        <div class="slide" data-t="3">
+          <div class="hd">Klebt. Dichtet. Hält.</div>
+          <div style="position:absolute;right:34px;top:110px;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:58%">
+            <div class="card" style="padding:14px"><b>High Tack</b><p style="font-size:13px">hohe Anfangsfestigkeit</p></div>
+            <div class="card" style="padding:14px"><b>UV-beständig</b><p style="font-size:13px">sehr gute Alterung</p></div>
+            <div class="card" style="padding:14px"><b>Dauerelastisch</b><p style="font-size:13px">−40 bis +120 °C</p></div>
+            <div class="card" style="padding:14px"><b>Überlackierbar</b><p style="font-size:13px">nass in nass</p></div>
+            <div class="card" style="padding:14px"><b>0 % Lösemittel</b><p style="font-size:13px">und Isocyanat</p></div>
+            <div class="card" style="padding:14px"><b>Geruchlos</b><p style="font-size:13px">neutral</p></div>
+          </div>
+        </div>
+        <div class="slide" data-t="4">
+          <div class="hd">Hält auf deinem Material?</div>
+          <div style="position:absolute;left:34px;right:34px;top:130px;display:grid;gap:10px">
+            <div class="card" style="border-left:6px solid var(--green)"><b>Ohne Primer</b><p>Alu · Edelstahl · Glas · PVC · GFK · lackiertes Metall &amp; Holz</p></div>
+            <div class="card" style="border-left:6px solid var(--yellow)"><b>Mit DEKAVATOR</b><p>bei Feuchte &amp; hoher Last</p></div>
+            <div class="card" style="border-left:6px solid var(--red)"><b>Nicht geeignet</b><p>PE · PP · Teflon</p></div>
+          </div>
+        </div>
+        <div class="slide" data-t="5">
+          <div class="hd">In 4 Schritten fest am Dach</div>
+          <div style="position:absolute;left:34px;right:34px;top:130px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="card"><b>1 Reinigen</b><p>DEKACLEAN Ultra</p></div><div class="card"><b>2 7-mm-Raupe</b><p>+5 bis +35 °C</p></div>
+            <div class="card"><b>3 Fügen</b><p>innerhalb 15 min</p></div><div class="card"><b>4 Aushärten</b><p>belastbar nach 24–48 h</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="infobox"><i>☀️</i>Für Solarmodule, SAT-Anlage &amp; Anbauteile – Kleben statt Bohren</div>
+      <div>
+        <h1 class="ptitle">DEKAsyl MS-5 High-Tack Kleb- &amp; Dichtstoff</h1>
+        <p class="usp">Klebt Solarmodul, SAT-Anlage &amp; Anbauteile ohne Bohren – und dichtet gleich mit.</p>
+      </div>
+      <a class="stars" href="#bewertungen"><b>★★★★★</b> 4,9 · 52 Bewertungen <span class="tag">Beispiel</span></a>
+      <div class="price"><strong id="price">19,95 €</strong><small id="unit">68,79 € / 1 l · inkl. MwSt., zzgl. Versand</small></div>
+
+      <div>
+        <div class="opt-label">Farbe: <span id="colLbl">Weiß</span></div>
+        <div class="swatches" id="colors">
+          <div class="sw on" data-v="Weiß"><span class="dot" style="background:#fff"></span>Weiß</div>
+          <div class="sw" data-v="Schwarz"><span class="dot" style="background:#1d1d1d"></span>Schwarz</div>
+        </div>
+        <p class="hint">Grau gesucht? <a href="#">DEKAsyl MS-2 gibt es in Grau ›</a></p>
+      </div>
+      <div>
+        <div class="opt-label">Gebinde: <span id="sizeLbl">290-ml-Kartusche</span></div>
+        <div class="swatches" id="sizes">
+          <div class="sw on" data-v="290">290-ml-Kartusche</div>
+          <div class="sw" data-v="600">600-ml-Schlauchbeutel</div>
+        </div>
+        <p class="hint" id="sizeHint" style="display:none">Für Schlauchbeutel brauchst du eine Beutel-Pistole. Schwarz gibt es als 290-ml-Kartusche.</p>
+      </div>
+
+      <div class="stock">Auf Lager – in 1–3 Werktagen bei dir</div>
+      <button class="btn btn-red atc" onclick="addCart()">In den Warenkorb</button>
+      <div class="iconlist"><div>🚚 Versand in 1–3 Werktagen</div><div>✓ Original vom Hersteller</div><div>💬 Kostenlose Anwendungs­beratung</div></div>
+
+      <ul class="shortdesc">
+        <li><b>Hält sofort:</b> Hohe Anfangsfestigkeit – Klemmen und Abstützen kannst du dir oft sparen.</li>
+        <li><b>Ohne Primer:</b> Haftet auf Aluminium, GFK, Glas, PVC und lackiertem Metall.</li>
+        <li><b>Für heiße Dächer gemacht:</b> dauerelastisch von −40 bis +120 °C, kurzzeitig bis 180 °C.</li>
+        <li><b>Unsichtbar machbar:</b> Nach der Hautbildung nass in nass überlackierbar.</li>
+      </ul>
+
+      <a class="setbox" href="#set"><span style="font-size:28px">🧰</span><span>Für Solarmodule: <b>Das Solar-Montage-Set</b> – MS-5, Reiniger, Haftvermittler &amp; Presse in einem Paket. <u>Ansehen ›</u></span></a>
+
+      <div>
+        <details class="acc"><summary>Versand &amp; Rückgabe</summary><div class="body">Versand mit DHL in 1–3 Werktagen, ab 49 € versandkostenfrei. 14 Tage Widerrufsrecht für ungeöffnete Ware. [Annahme]</div></details>
+        <details class="acc"><summary>Datenblatt &amp; Sicherheit</summary><div class="body">Technisches Datenblatt, Sicherheitsdatenblatt und Chemische Resistenz als PDF – <a href="#technik" style="color:var(--red);font-weight:700">zu den Downloads ›</a></div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VORTEILE (Vision: multicolumn) ============ -->
+<section class="s soft"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Warum MS-5</div><h2>Klebt. Dichtet. Hält.</h2><p>Ein Kraftkleber für alles, was ohne Bohrloch aufs Fahrzeug soll.</p></div>
+  <div class="grid3">
+    <div class="card"><div class="ic">⚡</div><h3>Hält sofort</h3><p>Hohe Anfangsfestigkeit: Das Bauteil sitzt schon beim Andrücken.</p></div>
+    <div class="card"><div class="ic">◎</div><h3>Ohne Primer</h3><p>Haftet direkt auf Alu, GFK, Glas, PVC und lackiertem Metall.</p></div>
+    <div class="card"><div class="ic">🌡️</div><h3>Hitze &amp; Frost</h3><p>Dauerelastisch von −40 bis +120 °C, kurzzeitig 180 °C.</p></div>
+    <div class="card"><div class="ic">☀️</div><h3>Sonnenfest</h3><p>Sehr gute UV- und Alterungsbeständigkeit.</p></div>
+    <div class="card"><div class="ic">🎨</div><h3>Überlackierbar</h3><p>Nach der Hautbildung nass in nass lackieren.</p></div>
+    <div class="card"><div class="ic">🍃</div><h3>Angenehm</h3><p>Ohne Lösemittel, Isocyanat und PVC. Neutral und geruchlos.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ ANWENDUNGEN (Vision: media-grid) ============ -->
+<section class="s"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Anwendungen</div><h2>Wofür Profis MS-5 nehmen</h2><p>Klick auf dein Projekt – wir zeigen dir, was du dafür brauchst.</p></div>
+  <div class="apps">
+    <a class="app" href="#"><span class="em">☀️</span><h3>Solarmodul &amp; Spoiler</h3><span>Anleitung &amp; Set ›</span></a>
+    <a class="app" href="#"><span class="em">📡</span><h3>SAT-Anlage &amp; Antenne</h3><span>Anleitung ›</span></a>
+    <a class="app" href="#"><span class="em">⛱️</span><h3>Markise, Dachträger &amp; Anbauteile</h3><span>Produkte ›</span></a>
+    <a class="app" href="#"><span class="em">🪟</span><h3>Fenster &amp; Dachdurchführungen</h3><span>Produkte ›</span></a>
+    <a class="app" href="#"><span class="em">🚛</span><h3>Kantenprofile an Anhängern</h3><span>Alu &amp; Polyester ›</span></a>
+    <a class="app" href="#"><span class="em">🔧</span><h3>Halter &amp; Abdeckungen im Ausbau</h3><span>Produkte ›</span></a>
+  </div>
+</div></section>
+
+<!-- ============ HAFTGRUND-AMPEL (Vision: rich-text + multicolumn) ============ -->
+<section class="s soft"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Materialcheck</div><h2>Hält es auf deinem Material?</h2><p>Die häufigste Frage vor dem Kauf – hier die ehrliche Antwort.</p></div>
+  <div class="ampel">
+    <div class="amp"><h3>🟢 Hält ohne Primer</h3><span class="pill">Aluminium</span><span class="pill">Edelstahl</span><span class="pill">verzinkter Stahl</span><span class="pill">Zink</span><span class="pill">Kupfer</span><span class="pill">Messing</span><span class="pill">lackiertes Metall</span><span class="pill">Glas</span><span class="pill">PVC</span><span class="pill">GFK / Polyester</span><span class="pill">lackiertes Holz</span></div>
+    <div class="amp y"><h3>🟡 Mit Haftvermittler sicherer</h3><p class="muted">Bei hoher Hitze, Vibration oder Last – besonders bei Feuchtigkeit – vorher DEKAVATOR 22 NF auftragen.</p><button class="btn btn-ghost" style="margin-top:14px;padding:8px 14px;font-size:14px" onclick="addCart()">+ DEKAVATOR hinzufügen</button></div>
+    <div class="amp r"><h3>🔴 Hält nicht</h3><p class="muted">PE, PP und Teflon. Schreib uns – wir finden eine Lösung für dein Material.</p></div>
+  </div>
+  <p class="note">Immer gilt: Fläche sauber, trocken, staub- und fettfrei machen – am besten mit DEKACLEAN Ultra. Im Zweifel vorher an einer unauffälligen Stelle testen.</p>
+</div></section>
+
+<!-- ============ STORYTELLING (Vision: background-video + Slideshow) ============ -->
+<section class="story">
+  <div class="story-hero"><div class="wrap">
+    <div class="eyebrow">Unsere Geschichte</div>
+    <h2>Kleben auf Meisterniveau.</h2>
+    <p>Seit 1907 kleben wir – erst für Werkstätten und den Automobilbau, heute auch für dein Wohnmobil.</p>
+    <a class="btn btn-ghost" href="#">▶ Video ansehen</a>
+  </div></div>
+  <div class="wrap timeline">
+    <div class="tl"><div class="yr">1907</div><h3>Klebstoff ist unser Handwerk</h3><p>Angefangen hat alles mit den „Deutschen Klebstoffwerken“. Ab 1935 Zusammenarbeit mit dem Automobilbau – dieses Werkstatt-Wissen steckt in jeder Kartusche.</p></div>
+    <div class="tl"><div class="yr">2012</div><h3>Vom Werkstattprofi aufs Wohnmobildach</h3><p>Lösungen für Caravaning, Schritt für Schritt erklärt. Wenn etwas ohne Bohrloch dauerhaft halten muss, empfehlen wir MS-5 – die Profi-Stufe nach MS-1 und MS-2.</p></div>
+    <div class="tl"><div class="yr">2014</div><h3>Wir bringen Kleben bei</h3><p>Schulungen nach DIN 2304 bis zum geprüften Klebepraktiker. Das Wissen des „Klebepapstes“ steckt im Buch „Klebt nicht gibt's nicht!“.</p></div>
+  </div>
+</section>
+
+<!-- ============ SCHRITT FÜR SCHRITT (Vision: scrolling-content) ============ -->
+<section class="s"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">So geht's</div><h2>So klebst du ein Solarmodul in 4 Schritten</h2></div>
+  <div class="steps">
+    <div class="step"><span class="t">5 min</span><h3>Reinigen</h3><p>Fläche mit DEKACLEAN Ultra sauber, trocken und fettfrei machen. Bei Feuchte oder hoher Last DEKAVATOR 22 NF auftragen.</p></div>
+    <div class="step"><span class="t">7-mm-Raupe</span><h3>Raupe ziehen</h3><p>Düse auf ca. 7 mm schneiden und eine Raupe auf Spoiler oder Halter ziehen. Verarbeite bei +5 bis +35 °C.</p></div>
+    <div class="step"><span class="t">&lt; 15 min</span><h3>Fügen</h3><p>Bauteil innerhalb von 15 Minuten aufsetzen und andrücken, bis eine 3–5 mm dicke Klebenaht entsteht.</p></div>
+    <div class="step"><span class="t">24–48 h</span><h3>Aushärten</h3><p>Haut nach ca. 12 Minuten, 4 mm Durchhärtung in 24 Stunden. Voll belastbar nach 24–48 Stunden.</p></div>
+  </div>
+  <p style="margin-top:24px"><a href="#" style="color:var(--red);font-weight:700">Ganze Anleitung mit Video ansehen ›</a></p>
+</div></section>
+
+<!-- ============ VERGLEICH (Vision: Product comparison / custom-liquid) ============ -->
+<section class="s soft"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Die richtige Wahl</div><h2>Welcher DEKAsyl passt zu deinem Projekt?</h2><p>Drei Stufen, ein Prinzip: Je mehr ein Bauteil halten muss, desto höher die Stufe.</p></div>
+  <div class="cmp-wrap">
+    <table class="cmp">
+      <tr><th></th><th>MS-1 · Einsteiger</th><th>MS-2 · Fortgeschrittene</th><th class="hl">MS-5 · Profi</th></tr>
+      <tr><td><b>Klebkraft</b></td><td class="dots">●○○○○</td><td class="dots">●●●○○</td><td class="hl dots">●●●●●</td></tr>
+      <tr><td><b>Ideal für</b></td><td>Fugen, Dichtnähte, Überlappungen</td><td>Verbindungen, Dichtnähte, Solaranlagen</td><td class="hl">Solarmodule, SAT-Anlagen, Spoiler, Dachkonstruktionen</td></tr>
+      <tr><td><b>Hält sofort (High Tack)</b></td><td>–</td><td>–</td><td class="hl">✓</td></tr>
+      <tr><td><b>Farben</b></td><td>weiß, grau, schwarz</td><td>weiß, grau, schwarz</td><td class="hl">weiß, schwarz</td></tr>
+      <tr><td><b>Gebinde</b></td><td>290 ml</td><td>290 ml, 600 ml</td><td class="hl">290 ml, 600 ml (weiß)</td></tr>
+    </table>
+    <p class="src">Klebkraft-Skala: Dekalin-Einstufung Einsteiger / Fortgeschrittene / Profi, als Punkte dargestellt.</p>
+  </div>
+  <h3 style="font-size:26px;margin-bottom:8px">MS-5 und Sikaflex-554 im Datenblatt-Vergleich</h3>
+  <p class="muted" style="margin-bottom:20px">Fair verglichen: nur Herstellerangaben aus den Technischen Datenblättern.</p>
+  <div class="cmp-wrap" style="margin-bottom:0">
+    <table class="cmp">
+      <tr><th>Datenblatt-Wert</th><th class="hl">DEKAsyl MS-5</th><th>Sikaflex-554</th></tr>
+      <tr><td>Hautbildung</td><td class="hl">ca. 12 min (20 °C)</td><td>25 min (23 °C)</td></tr>
+      <tr><td>Shore-A-Härte</td><td class="hl">ca. 55</td><td>55</td></tr>
+      <tr><td>Zugscherfestigkeit</td><td class="hl">ca. 2,5 MPa</td><td>2,5 MPa</td></tr>
+      <tr><td>Temperaturbeständigkeit</td><td class="hl">−40 bis +120 °C, kurz 180 °C</td><td>−50 bis +90 °C</td></tr>
+      <tr><td>Bruchdehnung</td><td class="hl">ca. 210 %</td><td>500 %</td></tr>
+      <tr><td>Lagerfähigkeit</td><td class="hl">18 Monate (Kartusche)</td><td>12 Monate</td></tr>
+    </table>
+    <p class="src"><b>Fazit:</b> Beide kleben bei Scherung gleich fest. MS-5 bildet schneller eine Haut und ist für höhere Dachtemperaturen ausgelegt; Sikaflex-554 ist dehnfähiger. Quellen: TDB DEKAsyl MS-5 (07/2024); Produktdatenblatt Sikaflex-554. Sikaflex ist eine Marke der Sika AG. [Vor Livegang rechtlich prüfen, § 6 UWG]</p>
+  </div>
+</div></section>
+
+<!-- ============ SET (Vision: promotion / Bundles) ============ -->
+<section class="s" id="set"><div class="wrap">
+  <div class="setpromo">
+    <div class="setart">
+      <div style="display:flex;align-items:flex-end;gap:14px">
+        <svg viewBox="0 0 120 300" style="width:70px;color:#f4f4f4"><use href="#kart"/></svg>
+        <svg viewBox="0 0 120 300" style="width:70px;color:#1d1d1d"><use href="#kart"/></svg>
+        <div style="width:58px;height:110px;border-radius:10px;background:#2a6fb0;color:#fff;font-weight:800;font-size:10px;display:grid;place-items:center;text-align:center">DEKA<br>CLEAN</div>
+        <div style="width:40px;height:70px;border-radius:8px;background:#f2b705;font-weight:800;font-size:9px;display:grid;place-items:center;text-align:center">DEKA<br>VATOR</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Set</div>
+      <h2>Alles für ein Solarmodul in einem Paket</h2>
+      <p class="muted" style="margin-top:10px">Damit dein Modul hält, zählt die Vorbereitung. Im Set ist alles drin – aufeinander abgestimmt.</p>
+      <ul class="setlist"><li>2 × DEKAsyl MS-5, 290 ml (weiß oder schwarz)</li><li>1 × DEKACLEAN Ultra Reinigungstücher</li><li>1 × DEKAVATOR 22 NF Haftvermittler, 30 ml</li><li>1 × Kartuschenpresse</li></ul>
+      <div class="setprice"><strong>69,95 €</strong><s>77,75 € einzeln</s><span class="badge">−10 %</span></div>
+      <button class="btn btn-red atc" onclick="addCart()">Set in den Warenkorb</button>
+      <p class="hint">Flexibles Modul? <a href="#">Zum Flexsolarmodul-Klebeset ›</a></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ TECHNIK & DOWNLOADS (Vision: tabbed-content) ============ -->
+<section class="s soft" id="technik"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Für Genaue</div><h2>Technik &amp; Downloads</h2></div>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-p="p1">Technische Daten</button><button class="tab" data-p="p2">Haftgründe</button><button class="tab" data-p="p3">Verarbeitung</button><button class="tab" data-p="p4">Downloads &amp; Sicherheit</button>
+  </div>
+  <div class="pane on" id="p1"><table class="spec">
+    <tr><td>Basis / Aushärtung</td><td>MS-Polymer / durch Luftfeuchtigkeit</td></tr>
+    <tr><td>Farben</td><td>weiß, schwarz</td></tr>
+    <tr><td>Hautbildungszeit (20 °C / 50 % r. F.)</td><td>ca. 12 min</td></tr>
+    <tr><td>Offene Zeit (Fügen)</td><td>&lt; 15 min</td></tr>
+    <tr><td>Durchhärtung nach 24 h</td><td>ca. 4 mm</td></tr>
+    <tr><td>Shore-A-Härte (DIN 53505)</td><td>ca. 55</td></tr>
+    <tr><td>Zugspannung bei Bruch</td><td>ca. 2,8 MPa</td></tr>
+    <tr><td>Bruchdehnung</td><td>ca. 210 %</td></tr>
+    <tr><td>Scherspannung (DIN 53283)</td><td>ca. 2,5 MPa</td></tr>
+    <tr><td>Weiterreißfestigkeit</td><td>ca. 14 N/mm</td></tr>
+    <tr><td>Temperaturbeständigkeit</td><td>−40 °C bis +120 °C, kurzzeitig +180 °C (max. 20 min)</td></tr>
+    <tr><td>Verarbeitungstemperatur</td><td>+5 °C bis +35 °C</td></tr>
+    <tr><td>Lösemittel / Isocyanat</td><td>0 % / 0 %</td></tr>
+    <tr><td>Lagerung</td><td>Kartusche 18 Monate, Schlauchbeutel 12 Monate (+10 bis +30 °C)</td></tr>
+    <tr><td>Art.-Nr.</td><td>62522 34 (290 ml weiß) · 62523 12 (600 ml weiß) · 62524 34 (290 ml schwarz)</td></tr>
+  </table></div>
+  <div class="pane" id="p2"><p>Ohne Primer auf sauberen, trockenen, staub- und fettfreien Flächen aus Aluminium, Edelstahl, verzinktem Stahl, Zink, Kupfer, Messing, pulverbeschichtetem Metall, den meisten lackierten Metallen, Glas, PVC, Polyester (GFK) sowie gestrichenem und lackiertem Holz.</p><p style="margin-top:12px">Keine Haftung ohne Vorbehandlung auf PE, PP und Teflon. Bei hoher thermischer oder physikalischer Belastung, besonders bei Feuchtigkeit: DEKAVATOR 22 NF.</p></div>
+  <div class="pane" id="p3"><ul class="shortdesc"><li><b>Abdichten:</b> innerhalb von 12 Minuten mit einem in DEKAFINISHER getauchten Spachtel glätten.</li><li><b>Kleben:</b> Teile innerhalb von 15 Minuten fügen, Klebeschicht 2 mm.</li><li><b>Lackieren:</b> nach 10 Minuten möglich, beste Lackhaftung nach ca. 4 Stunden.</li><li><b>Reinigen:</b> unausgehärtete Reste mit DEKACLEAN Ultra entfernen.</li></ul></div>
+  <div class="pane" id="p4"><div class="dl"><a href="#">Technisches Datenblatt DEKAsyl MS-5 <span>PDF ↓</span></a><a href="#">Sicherheitsdatenblatt DEKAsyl MS-5 <span>PDF ↓</span></a><a href="#">Chemische Resistenz DEKAsyl MS-Polymer <span>PDF ↓</span></a></div><p class="src">Nicht als gefährlich eingestuft nach CLP. EUH208, EUH210.</p></div>
+</div></section>
+
+<!-- ============ SERVICE (Vision: text-with-icons) ============ -->
+<section class="s"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Service</div><h2>Wir lassen dich nicht allein</h2></div>
+  <div class="service">
+    <div class="card"><div class="ic">💬</div><h3>Kostenlose Anwendungsberatung</h3><p>Schick uns ein Foto deines Projekts – wir sagen dir, welches Produkt hält.</p></div>
+    <div class="card"><div class="ic">🛡️</div><h3>Anwendungs­versprechen</h3><p>Hält MS-5 bei Verarbeitung nach Anleitung nicht, ersetzen wir das Material.</p></div>
+    <div class="card"><div class="ic">🚚</div><h3>Schnell bei dir</h3><p>Versand in 1–3 Werktagen, ab 49 € versandkostenfrei.</p></div>
+    <div class="card"><div class="ic">🏭</div><h3>Original vom Hersteller</h3><p>Frische Ware direkt aus unserem Lager. Ungeöffnet 18 Monate lagerfähig.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ FAQ (Vision: collapsible-content) ============ -->
+<section class="s soft"><div class="wrap faq">
+  <div class="s-head"><div class="eyebrow">FAQ</div><h2>Häufige Fragen zu DEKAsyl MS-5</h2></div>
+  <details class="acc" open><summary>Hält MS-5 ein Solarmodul auf dem Wohnmobildach – ganz ohne Bohren?</summary><div class="body">Ja, dafür empfehlen wir MS-5: Spoiler oder Halter werden aufs Dach geklebt, die Klebenaht dichtet gleichzeitig ab. Entscheidend ist die Vorbereitung: Fläche mit DEKACLEAN Ultra reinigen, bei Feuchte oder hoher Last DEKAVATOR 22 NF auftragen, 3–5 mm Klebenaht. Voll belastbar nach 24–48 Stunden.</div></details>
+  <details class="acc"><summary>Brauche ich einen Primer?</summary><div class="body">Meist nicht. MS-5 haftet ohne Grundierung auf Aluminium, Edelstahl, verzinktem Stahl, Glas, PVC, GFK, lackiertem Metall und Holz. Bei hoher Hitze, Vibration oder Last – besonders bei Feuchtigkeit – empfehlen wir DEKAVATOR 22 NF. Auf PE, PP und Teflon hält MS-5 nicht.</div></details>
+  <details class="acc"><summary>Wie lange dauert es, bis die Verklebung hält?</summary><div class="body">Das Bauteil sitzt schon beim Andrücken. Nach ca. 12 Minuten bildet sich eine Haut, nach 24 Stunden sind 4 mm durchgehärtet. Voll belastbar nach 24–48 Stunden.</div></details>
+  <details class="acc"><summary>Kann ich MS-5 überlackieren?</summary><div class="body">Ja, nach der Hautbildung nass in nass, frühestens nach 10 Minuten; beste Lackhaftung nach etwa 4 Stunden. Vorher einen Verträglichkeitstest machen.</div></details>
+  <details class="acc"><summary>Was ist der Unterschied zu DEKAsyl MS-1 und MS-2?</summary><div class="body">MS-1 ist der Dichtstoff für Einsteiger, MS-2 für Fortgeschrittene. MS-5 ist die Profi-Stufe: ein High-Tack-Konstruktionsklebstoff für Bauteile, die halten müssen.</div></details>
+  <details class="acc"><summary>Ist MS-5 ein Silikon?</summary><div class="body">Nein. MS-5 basiert auf MS-Polymer und ist frei von Silikon, Lösemitteln, Isocyanat und PVC.</div></details>
+  <details class="acc"><summary>Wie viel brauche ich?</summary><div class="body">Eine 290-ml-Kartusche ergibt rechnerisch etwa 7 Meter Raupe mit 7 mm Durchmesser [Annahme]. Für ein Solarmodul mit vier Spoilern plane eine zweite Kartusche ein – deshalb sind im Set zwei.</div></details>
+  <p style="margin-top:22px"><a href="#" style="color:var(--red);font-weight:700">Deine Frage ist nicht dabei? Schreib uns – wir antworten persönlich ›</a></p>
+</div></section>
+
+<!-- ============ BEWERTUNGEN (Vision: app-wrapper) ============ -->
+<section class="s" id="bewertungen"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Bewertungen</div><h2>Das sagen Kunden über MS-5</h2></div>
+  <div class="reviews">
+    <div class="score"><strong>4,9</strong><b style="color:#E8A317;font-size:22px">★★★★★</b><p class="muted">52 Bewertungen <span class="tag">Beispiel</span></p><button class="btn btn-ghost" style="margin-top:16px">Bewertung schreiben</button></div>
+    <div>
+      <div class="rv"><b>★★★★★</b> <strong>Bombenfest</strong><span class="tag">Beispiel</span><p class="muted">„Zwei Solarmodule mit Spoilern aufs Alu-Dach geklebt, nach 2.000 km sitzt alles bombenfest.“</p></div>
+      <div class="rv"><b>★★★★★</b> <strong>Hält sofort</strong><span class="tag">Beispiel</span><p class="muted">„Ich musste nichts abstützen. Anleitung war klar.“</p></div>
+      <div class="rv"><b>★★★★☆</b> <strong>Super Haftung</strong><span class="tag">Beispiel</span><p class="muted">„Bei Kälte etwas zäh aus der Kartusche.“</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ CROSS-SELL (Vision: product-recommendations) ============ -->
+<section class="s soft"><div class="wrap">
+  <div class="s-head"><div class="eyebrow">Passt dazu</div><h2>Das brauchst du dazu</h2></div>
+  <div class="prods">
+    <div class="pc"><div class="im"><div style="width:70px;height:120px;border-radius:12px;background:#2a6fb0;color:#fff;font-weight:800;font-size:11px;display:grid;place-items:center;text-align:center">DEKA<br>CLEAN</div></div><div class="tx"><small>Damit es hält</small><b>DEKACLEAN Ultra</b>9,95 € <span class="tag">Annahme</span><button class="btn btn-ghost qa" onclick="addCart()">+ Hinzufügen</button></div></div>
+    <div class="pc"><div class="im"><div style="width:52px;height:90px;border-radius:10px;background:#f2b705;font-weight:800;font-size:10px;display:grid;place-items:center;text-align:center">DEKA<br>VATOR</div></div><div class="tx"><small>Haftvermittler</small><b>DEKAVATOR 22 NF</b>14,95 € <span class="tag">Annahme</span><button class="btn btn-ghost qa" onclick="addCart()">+ Hinzufügen</button></div></div>
+    <div class="pc"><div class="im"><svg viewBox="0 0 120 60" style="width:70%"><rect x="10" y="20" width="80" height="18" rx="4" fill="#555"/><path d="M90 24h22v10H90z" fill="#999"/><path d="M30 38l-6 18h10l6-18z" fill="#D42A3B"/></svg></div><div class="tx"><small>Werkzeug</small><b>Kartuschenpresse</b>12,95 € <span class="tag">Annahme</span><button class="btn btn-ghost qa" onclick="addCart()">+ Hinzufügen</button></div></div>
+    <div class="pc"><div class="im"><svg viewBox="0 0 120 300" style="width:46px;color:#9a9a9a"><use href="#kart"/></svg></div><div class="tx"><small>Nur abdichten?</small><b>DEKAsyl MS-2</b>14,95 € <span class="tag">Annahme</span><button class="btn btn-ghost qa">Ansehen</button></div></div>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ FOOTER (Vision: footer) ============ -->
+<footer><div class="wrap">
+  <div class="f-top">
+    <div><a class="logo" href="#" style="color:#fff"><span class="logo-mark">D</span>DEKALIN</a><p style="opacity:.8;margin-top:14px;max-width:300px">Kleben &amp; Dichten seit 1907. Profi-Know-how für Wohnmobil, Caravan und Werkstatt – direkt vom Hersteller.</p><p style="margin-top:12px">support@dekalin.de</p><div class="social"><span>f</span><span>ig</span><span>yt</span></div></div>
+    <div><h5>Shop</h5><ul><li><a href="#">Abdichten</a></li><li><a href="#">Kleben &amp; Montieren</a></li><li><a href="#">Reparieren &amp; Schützen</a></li><li><a href="#">Reinigen &amp; Zubehör</a></li><li><a href="#">Klebe- &amp; Dichtsets</a></li><li><a href="#">Bestseller</a></li></ul></div>
+    <div><h5>Hilfe</h5><ul><li><a href="#">Kostenlose Beratung</a></li><li><a href="#">Produktfinder</a></li><li><a href="#">Häufige Fragen</a></li><li><a href="#">Versand &amp; Lieferung</a></li><li><a href="#">Rückgabe &amp; Widerruf</a></li><li><a href="#">Kontakt</a></li></ul></div>
+    <div><h5>Wissen &amp; Dekalin</h5><ul><li><a href="#">Anleitungen &amp; Videos</a></li><li><a href="#">Datenblätter &amp; SDB</a></li><li><a href="#">Über Dekalin</a></li><li><a href="#">Schulungen DIN 2304</a></li><li><a href="#">Gewerbe &amp; Händler</a></li><li><a href="#">Karriere</a></li></ul></div>
+  </div>
+  <div class="f-news">
+    <div><h3 style="font-size:24px">Klebe-Tipps vom Profi</h3><p style="opacity:.8">Anleitungen, Projektideen und neue Produkte – ein- bis zweimal im Monat.</p></div>
+    <div><form onsubmit="event.preventDefault()"><input type="email" placeholder="E-Mail-Adresse"><button class="btn btn-red">Anmelden</button></form><label><input type="checkbox"> Ich möchte den Newsletter erhalten. Abmeldung jederzeit möglich. Mehr in der Datenschutzerklärung.</label></div>
+  </div>
+  <div class="f-trust"><span>✓ Original vom Hersteller &nbsp;&nbsp; ✓ Versand mit DHL &nbsp;&nbsp; ✓ Sicher bezahlen</span><div class="pay"><span>PayPal</span><span>VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Klarna</span></div></div>
+  <div class="f-legal"><span>© 2026 DEKALIN · Impressum · AGB · Datenschutz · Widerrufsbelehrung · Versand &amp; Zahlung · Cookie-Einstellungen · Barrierefreiheit</span><span>Alle Preise inkl. MwSt., zzgl. Versandkosten</span></div>
+</div></footer>
+
+<!-- Mobile Dock (Vision 18) bewusst AUS – zwei Navigationen verwirren (siehe Theme-Konfiguration) -->
+<div class="proto-flag">Prototyp · Beispielinhalte · Preise = Annahmen</div>
+
+<script>
+// Announcement rotation
+const annTexts=["✓ Versand in 1–3 Werktagen · ab 49 € versandkostenfrei","✓ Direkt vom Hersteller – Kleb- & Dichtstoffe seit 1907","✓ Kostenlose Anwendungsberatung vom Dekalin-Team"];let ai=0;
+function ann(d){ai=(ai+d+annTexts.length)%annTexts.length;document.getElementById('annText').textContent=annTexts[ai]}
+setInterval(()=>ann(1),5000);
+// Gallery thumbs
+const slides=[...document.querySelectorAll('.slide')],thumbs=document.getElementById('thumbs');
+slides.forEach((s,i)=>{const t=document.createElement('div');t.className='thumb'+(i?'':' on');t.innerHTML='<div style="font:800 11px Barlow;padding:6px;line-height:1.1">'+s.querySelector('.hd').textContent+'</div>';t.onclick=()=>{slides.forEach(x=>x.classList.remove('on'));[...thumbs.children].forEach(x=>x.classList.remove('on'));s.classList.add('on');t.classList.add('on')};thumbs.appendChild(t)});
+// Variants
+let color='Weiß',size='290';
+const prices={'290':['19,95 €','68,79 € / 1 l'],'600':['32,95 €','54,92 € / 1 l']};
+function render(){
+  document.querySelectorAll('#colors .sw').forEach(e=>e.classList.toggle('on',e.dataset.v===color));
+  document.querySelectorAll('#sizes .sw').forEach(e=>{e.classList.toggle('on',e.dataset.v===size);e.classList.toggle('off',color==='Schwarz'&&e.dataset.v==='600')});
+  document.getElementById('colLbl').textContent=color;
+  document.getElementById('sizeLbl').textContent=size==='290'?'290-ml-Kartusche':'600-ml-Schlauchbeutel';
+  document.getElementById('price').textContent=prices[size][0];
+  document.getElementById('unit').textContent=prices[size][1]+' · inkl. MwSt., zzgl. Versand';
+  document.getElementById('sizeHint').style.display=size==='600'?'block':'none';
+  document.querySelector('.slide[data-t="1"] .art').style.color=color==='Schwarz'?'#1d1d1d':'#f4f4f4';
+}
+document.querySelectorAll('#colors .sw').forEach(e=>e.onclick=()=>{color=e.dataset.v;if(color==='Schwarz')size='290';render()});
+document.querySelectorAll('#sizes .sw').forEach(e=>e.onclick=()=>{if(color==='Schwarz'&&e.dataset.v==='600')return;size=e.dataset.v;render()});
+// Tabs
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById(t.dataset.p).classList.add('on')});
+// Cart
+let cc=0;function addCart(){cc++;document.getElementById('cartCount').textContent=cc}
+</script>
+</body>
+</html>

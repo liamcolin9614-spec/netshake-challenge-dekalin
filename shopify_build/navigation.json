@@ -1,0 +1,622 @@
+{
+ "menus": {
+  "main-menu": {
+   "title": "Hauptmenü",
+   "items": [
+    {
+     "title": "Abdichten",
+     "url": "/collections/abdichten",
+     "items": [
+      {
+       "title": "Am Dach",
+       "url": "/collections/abdichten",
+       "items": [
+        {
+         "title": "Fenster & Dachluken abdichten",
+         "url": "/collections/fenster-dachluken-abdichten",
+         "items": []
+        },
+        {
+         "title": "Dachhauben & Kabeldurchführungen",
+         "url": "/collections/dachhauben-durchfuehrungen-abdichten",
+         "items": []
+        },
+        {
+         "title": "Fugen & Nähte außen",
+         "url": "/collections/fugen-naehte-aussen",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "An Wänden, Türen & innen",
+       "url": "/collections/abdichten",
+       "items": [
+        {
+         "title": "Serviceklappen & Türen (wiederlösbar)",
+         "url": "/collections/serviceklappen-tueren-abdichten",
+         "items": []
+        },
+        {
+         "title": "Kantenleisten & Keder",
+         "url": "/collections/kantenleisten-keder",
+         "items": []
+        },
+        {
+         "title": "Bad & Küche (innen)",
+         "url": "/collections/bad-kueche-abdichten",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Alle Produkte zum Abdichten",
+       "url": "/collections/abdichten",
+       "items": []
+      }
+     ]
+    },
+    {
+     "title": "Kleben & Montieren",
+     "url": "/collections/kleben-montieren",
+     "items": [
+      {
+       "title": "Aufs Dach",
+       "url": "/collections/kleben-montieren",
+       "items": [
+        {
+         "title": "Solarmodul kleben",
+         "url": "/collections/solarmodul-kleben",
+         "items": []
+        },
+        {
+         "title": "SAT-Anlage & Antenne kleben",
+         "url": "/collections/sat-anlage-antenne-kleben",
+         "items": []
+        },
+        {
+         "title": "Markise, Dachträger & Anbauteile",
+         "url": "/collections/markise-dachtraeger-anbauteile-kleben",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Bauteile & Ausbau",
+       "url": "/collections/kleben-montieren",
+       "items": [
+        {
+         "title": "Fenster & Scheiben einkleben",
+         "url": "/collections/fenster-scheiben-einkleben",
+         "items": []
+        },
+        {
+         "title": "Halter, Leisten & Innenausbau",
+         "url": "/collections/halter-leisten-innenausbau-kleben",
+         "items": []
+        },
+        {
+         "title": "Seitenwände & Großflächen (Profi)",
+         "url": "/collections/seitenwand-grossflaechen-kleben",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Alle Produkte zum Kleben",
+       "url": "/collections/kleben-montieren",
+       "items": []
+      }
+     ]
+    },
+    {
+     "title": "Reparieren & Schützen",
+     "url": "/collections/reparieren-schuetzen",
+     "items": [
+      {
+       "title": "Reparieren",
+       "url": "/collections/reparieren-schuetzen",
+       "items": [
+        {
+         "title": "Kunststoff & GFK reparieren",
+         "url": "/collections/kunststoff-gfk-reparieren",
+         "items": []
+        },
+        {
+         "title": "Ausgerissene Schraublöcher",
+         "url": "/collections/schraubloecher-reparieren",
+         "items": []
+        },
+        {
+         "title": "Undichte Stellen & Wasserschaden",
+         "url": "/collections/wasserschaden-reparieren",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Schützen",
+       "url": "/collections/reparieren-schuetzen",
+       "items": [
+        {
+         "title": "Unterbodenschutz",
+         "url": "/collections/unterbodenschutz",
+         "items": []
+        },
+        {
+         "title": "Hohlraumschutz",
+         "url": "/collections/hohlraumschutz",
+         "items": []
+        },
+        {
+         "title": "Radkästen",
+         "url": "/collections/radkaesten-schuetzen",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Alle Produkte zum Reparieren & Schützen",
+       "url": "/collections/reparieren-schuetzen",
+       "items": []
+      }
+     ]
+    },
+    {
+     "title": "Reinigen & Zubehör",
+     "url": "/collections/reinigen-zubehoer",
+     "items": [
+      {
+       "title": "Vorbereiten & Finish",
+       "url": "/collections/reinigen-zubehoer",
+       "items": [
+        {
+         "title": "Reinigen & Entfetten",
+         "url": "/collections/reinigen-entfetten",
+         "items": []
+        },
+        {
+         "title": "Haftvermittler (Primer)",
+         "url": "/collections/haftvermittler-primer",
+         "items": []
+        },
+        {
+         "title": "Fugen glätten & Regenstreifen",
+         "url": "/collections/glaetten-fugen-finish",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Sets & Werkzeug",
+       "url": "/collections/reinigen-zubehoer",
+       "items": [
+        {
+         "title": "Klebe- & Dichtsets",
+         "url": "/collections/klebesets",
+         "items": []
+        },
+        {
+         "title": "Kartuschenpressen & Werkzeug",
+         "url": "/collections/kartuschenpressen-werkzeug",
+         "items": []
+        },
+        {
+         "title": "Bestseller",
+         "url": "/collections/bestseller",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Alles Zubehör",
+       "url": "/collections/reinigen-zubehoer",
+       "items": []
+      }
+     ]
+    },
+    {
+     "title": "Ratgeber",
+     "url": "/pages/ratgeber",
+     "items": [
+      {
+       "title": "Richtiges Produkt finden",
+       "url": "/pages/produktfinder",
+       "items": [
+        {
+         "title": "Produktfinder (3 Fragen)",
+         "url": "/pages/produktfinder",
+         "items": []
+        },
+        {
+         "title": "Welcher DEKAsyl? MS-1, MS-2, MS-5",
+         "url": "/pages/dekasyl-vergleich",
+         "items": []
+        },
+        {
+         "title": "Häufige Fragen (FAQ)",
+         "url": "/pages/faq",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Anleitungen & Downloads",
+       "url": "/blogs/anleitungen",
+       "items": [
+        {
+         "title": "Schritt-für-Schritt-Anleitungen",
+         "url": "/blogs/anleitungen",
+         "items": []
+        },
+        {
+         "title": "Video-Akademie",
+         "url": "/pages/video-akademie",
+         "items": []
+        },
+        {
+         "title": "Datenblätter & Sicherheitsdatenblätter",
+         "url": "/pages/datenblaetter",
+         "items": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Warum Dekalin",
+     "url": "/pages/ueber-dekalin",
+     "items": [
+      {
+       "title": "Erfahrung",
+       "url": "/pages/ueber-dekalin",
+       "items": [
+        {
+         "title": "Seit 1907: unsere Geschichte",
+         "url": "/pages/ueber-dekalin",
+         "items": []
+        },
+        {
+         "title": "Der „Klebepapst“ & sein Buch",
+         "url": "/pages/klebepapst-buch",
+         "items": []
+        },
+        {
+         "title": "Auszeichnungen (HIPE & Plus X 2025)",
+         "url": "/pages/auszeichnungen",
+         "items": []
+        }
+       ]
+      },
+      {
+       "title": "Service",
+       "url": "/pages/beratung",
+       "items": [
+        {
+         "title": "Kostenlose Anwendungsberatung",
+         "url": "/pages/beratung",
+         "items": []
+        },
+        {
+         "title": "Schulungen nach DIN 2304",
+         "url": "/pages/schulungen",
+         "items": []
+        },
+        {
+         "title": "Für Gewerbe & Händler",
+         "url": "/pages/gewerbe-haendler",
+         "items": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "footer-shop": {
+   "title": "Shop",
+   "items": [
+    {
+     "title": "Abdichten",
+     "url": "/collections/abdichten",
+     "items": []
+    },
+    {
+     "title": "Kleben & Montieren",
+     "url": "/collections/kleben-montieren",
+     "items": []
+    },
+    {
+     "title": "Reparieren & Schützen",
+     "url": "/collections/reparieren-schuetzen",
+     "items": []
+    },
+    {
+     "title": "Reinigen & Zubehör",
+     "url": "/collections/reinigen-zubehoer",
+     "items": []
+    },
+    {
+     "title": "Klebe- & Dichtsets",
+     "url": "/collections/klebesets",
+     "items": []
+    },
+    {
+     "title": "Bestseller",
+     "url": "/collections/bestseller",
+     "items": []
+    }
+   ]
+  },
+  "footer-hilfe": {
+   "title": "Hilfe",
+   "items": [
+    {
+     "title": "Kostenlose Anwendungsberatung",
+     "url": "/pages/beratung",
+     "items": []
+    },
+    {
+     "title": "Produktfinder",
+     "url": "/pages/produktfinder",
+     "items": []
+    },
+    {
+     "title": "Häufige Fragen",
+     "url": "/pages/faq",
+     "items": []
+    },
+    {
+     "title": "Versand & Lieferung",
+     "url": "/policies/shipping-policy",
+     "items": []
+    },
+    {
+     "title": "Rückgabe & Widerruf",
+     "url": "/policies/refund-policy",
+     "items": []
+    },
+    {
+     "title": "Kontakt",
+     "url": "/pages/kontakt",
+     "items": []
+    }
+   ]
+  },
+  "footer-dekalin": {
+   "title": "Wissen & Dekalin",
+   "items": [
+    {
+     "title": "Anleitungen & Videos",
+     "url": "/blogs/anleitungen",
+     "items": []
+    },
+    {
+     "title": "Datenblätter & SDB",
+     "url": "/pages/datenblaetter",
+     "items": []
+    },
+    {
+     "title": "Über Dekalin (seit 1907)",
+     "url": "/pages/ueber-dekalin",
+     "items": []
+    },
+    {
+     "title": "Schulungen nach DIN 2304",
+     "url": "/pages/schulungen",
+     "items": []
+    },
+    {
+     "title": "Gewerbe & Händler",
+     "url": "/pages/gewerbe-haendler",
+     "items": []
+    },
+    {
+     "title": "Karriere",
+     "url": "/pages/karriere",
+     "items": []
+    }
+   ]
+  },
+  "footer-rechtliches": {
+   "title": "Rechtliches",
+   "items": [
+    {
+     "title": "Impressum",
+     "url": "/policies/legal-notice",
+     "items": []
+    },
+    {
+     "title": "AGB",
+     "url": "/policies/terms-of-service",
+     "items": []
+    },
+    {
+     "title": "Datenschutz",
+     "url": "/policies/privacy-policy",
+     "items": []
+    },
+    {
+     "title": "Widerrufsbelehrung",
+     "url": "/policies/refund-policy",
+     "items": []
+    },
+    {
+     "title": "Versand & Zahlung",
+     "url": "/policies/shipping-policy",
+     "items": []
+    },
+    {
+     "title": "Cookie-Einstellungen",
+     "url": "#cookie-settings",
+     "items": []
+    },
+    {
+     "title": "Barrierefreiheit",
+     "url": "/pages/barrierefreiheit",
+     "items": []
+    }
+   ]
+  }
+ },
+ "collections": [
+  {
+   "handle": "abdichten",
+   "title": "Abdichten",
+   "tag": "welt:abdichten"
+  },
+  {
+   "handle": "fenster-dachluken-abdichten",
+   "title": "Fenster & Dachluken abdichten",
+   "tag": "anwendung:fenster-dachluken-abdichten"
+  },
+  {
+   "handle": "dachhauben-durchfuehrungen-abdichten",
+   "title": "Dachhauben & Kabeldurchführungen",
+   "tag": "anwendung:dachhauben-durchfuehrungen-abdichten"
+  },
+  {
+   "handle": "fugen-naehte-aussen",
+   "title": "Fugen & Nähte außen",
+   "tag": "anwendung:fugen-naehte-aussen"
+  },
+  {
+   "handle": "serviceklappen-tueren-abdichten",
+   "title": "Serviceklappen & Türen (wiederlösbar)",
+   "tag": "anwendung:serviceklappen-tueren-abdichten"
+  },
+  {
+   "handle": "kantenleisten-keder",
+   "title": "Kantenleisten & Keder",
+   "tag": "anwendung:kantenleisten-keder"
+  },
+  {
+   "handle": "bad-kueche-abdichten",
+   "title": "Bad & Küche (innen)",
+   "tag": "anwendung:bad-kueche-abdichten"
+  },
+  {
+   "handle": "kleben-montieren",
+   "title": "Kleben & Montieren",
+   "tag": "welt:kleben-montieren"
+  },
+  {
+   "handle": "solarmodul-kleben",
+   "title": "Solarmodul kleben",
+   "tag": "anwendung:solarmodul-kleben"
+  },
+  {
+   "handle": "sat-anlage-antenne-kleben",
+   "title": "SAT-Anlage & Antenne kleben",
+   "tag": "anwendung:sat-anlage-antenne-kleben"
+  },
+  {
+   "handle": "markise-dachtraeger-anbauteile-kleben",
+   "title": "Markise, Dachträger & Anbauteile",
+   "tag": "anwendung:markise-dachtraeger-anbauteile-kleben"
+  },
+  {
+   "handle": "fenster-scheiben-einkleben",
+   "title": "Fenster & Scheiben einkleben",
+   "tag": "anwendung:fenster-scheiben-einkleben"
+  },
+  {
+   "handle": "halter-leisten-innenausbau-kleben",
+   "title": "Halter, Leisten & Innenausbau",
+   "tag": "anwendung:halter-leisten-innenausbau-kleben"
+  },
+  {
+   "handle": "seitenwand-grossflaechen-kleben",
+   "title": "Seitenwände & Großflächen (Profi)",
+   "tag": "anwendung:seitenwand-grossflaechen-kleben"
+  },
+  {
+   "handle": "reparieren-schuetzen",
+   "title": "Reparieren & Schützen",
+   "tag": "welt:reparieren-schuetzen"
+  },
+  {
+   "handle": "kunststoff-gfk-reparieren",
+   "title": "Kunststoff & GFK reparieren",
+   "tag": "anwendung:kunststoff-gfk-reparieren"
+  },
+  {
+   "handle": "schraubloecher-reparieren",
+   "title": "Ausgerissene Schraublöcher",
+   "tag": "anwendung:schraubloecher-reparieren"
+  },
+  {
+   "handle": "wasserschaden-reparieren",
+   "title": "Undichte Stellen & Wasserschaden",
+   "tag": "anwendung:wasserschaden-reparieren"
+  },
+  {
+   "handle": "unterbodenschutz",
+   "title": "Unterbodenschutz",
+   "tag": "anwendung:unterbodenschutz"
+  },
+  {
+   "handle": "hohlraumschutz",
+   "title": "Hohlraumschutz",
+   "tag": "anwendung:hohlraumschutz"
+  },
+  {
+   "handle": "radkaesten-schuetzen",
+   "title": "Radkästen",
+   "tag": "anwendung:radkaesten-schuetzen"
+  },
+  {
+   "handle": "reinigen-zubehoer",
+   "title": "Reinigen & Zubehör",
+   "tag": "welt:reinigen-zubehoer"
+  },
+  {
+   "handle": "reinigen-entfetten",
+   "title": "Reinigen & Entfetten",
+   "tag": "anwendung:reinigen-entfetten"
+  },
+  {
+   "handle": "haftvermittler-primer",
+   "title": "Haftvermittler (Primer)",
+   "tag": "anwendung:haftvermittler-primer"
+  },
+  {
+   "handle": "glaetten-fugen-finish",
+   "title": "Fugen glätten & Regenstreifen",
+   "tag": "anwendung:glaetten-fugen-finish"
+  },
+  {
+   "handle": "klebesets",
+   "title": "Klebe- & Dichtsets",
+   "tag": "set"
+  },
+  {
+   "handle": "kartuschenpressen-werkzeug",
+   "title": "Kartuschenpressen & Werkzeug",
+   "tag": "anwendung:kartuschenpressen-werkzeug"
+  },
+  {
+   "handle": "bestseller",
+   "title": "Bestseller",
+   "tag": "bestseller"
+  }
+ ],
+ "pages": {
+  "ratgeber": "Ratgeber",
+  "produktfinder": "Richtiges Produkt finden",
+  "dekasyl-vergleich": "Welcher DEKAsyl? MS-1, MS-2, MS-5",
+  "faq": "Häufige Fragen (FAQ)",
+  "video-akademie": "Video-Akademie",
+  "datenblaetter": "Datenblätter & Sicherheitsdatenblätter",
+  "ueber-dekalin": "Warum Dekalin",
+  "klebepapst-buch": "Der „Klebepapst“ & sein Buch",
+  "auszeichnungen": "Auszeichnungen (HIPE & Plus X 2025)",
+  "beratung": "Service",
+  "schulungen": "Schulungen nach DIN 2304",
+  "gewerbe-haendler": "Für Gewerbe & Händler",
+  "kontakt": "Kontakt",
+  "karriere": "Karriere",
+  "barrierefreiheit": "Barrierefreiheit",
+  "anleitung-solarmodul-kleben": "Solarpanel ohne Bohren aufs Wohnmobildach kleben"
+ }
+}

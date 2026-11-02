@@ -1,0 +1,4 @@
+# Private, nur lokale Notizen
+PRIVAT_*.md
+PRIVAT_*/
+.DS_Store
